@@ -31,6 +31,17 @@
     .timeline-time { color:var(--accent); font-weight:bold; min-width:80px; }
     .reveal pre { font-size:.55em; }
     .reveal .slides section { padding:20px 40px; }
+    /* Curtain close */
+    .curtain-left, .curtain-right {
+      position:fixed; top:0; width:0; height:100%;
+      background:#0a0a0a; z-index:9999;
+      transition: width 2s cubic-bezier(.77,0,.18,1);
+      pointer-events:none;
+    }
+    .curtain-left  { left:0; }
+    .curtain-right { right:0; }
+    .curtains-close .curtain-left,
+    .curtains-close .curtain-right { width:51%; }
     /* Quiz styles */
     .quiz-q { font-size:1em; color:#ecf0f1; margin-bottom:.8em; line-height:1.5; }
     .quiz-options { list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:.5em; }
@@ -45,6 +56,8 @@
   </style>
 </head>
 <body>
+<div class="curtain-left"></div>
+<div class="curtain-right"></div>
 <div class="reveal">
 <div class="slides">
 
@@ -623,30 +636,6 @@ public class SubmissionService {
   <p style="font-size:.65em;color:#555;margin:0;">
     — Aditya Dua · Sr. Manager, Field Services · GitHub India
   </p>
-  <style>
-    .curtain-left, .curtain-right {
-      position:fixed; top:0; width:0; height:100%;
-      background:#0a0a0a; z-index:9999;
-      transition: width 2s cubic-bezier(.77,0,.18,1);
-    }
-    .curtain-left  { left:0; }
-    .curtain-right { right:0; }
-    .curtains-close .curtain-left,
-    .curtains-close .curtain-right { width:51%; }
-  </style>
-  <div class="curtain-left"  id="cl"></div>
-  <div class="curtain-right" id="cr"></div>
-  <script>
-    Reveal.on('slidechanged', function(e) {
-      if (e.currentSlide === e.currentSlide.closest('.slides').lastElementChild) {
-        setTimeout(function(){
-          document.body.classList.add('curtains-close');
-        }, 5000);
-      } else {
-        document.body.classList.remove('curtains-close');
-      }
-    });
-  </script>
 </section>
 
 </div>
@@ -689,6 +678,21 @@ public class SubmissionService {
     var el = document.getElementById(id);
     if (el) el.style.display = 'block';
   }
+
+  var curtainTimer = null;
+  Reveal.on('slidechanged', function(e) {
+    // clear any pending curtain from previous slide
+    if (curtainTimer) { clearTimeout(curtainTimer); curtainTimer = null; }
+    document.body.classList.remove('curtains-close');
+    // fire curtain only on the very last slide
+    var totalSlides = Reveal.getTotalSlides();
+    var indices     = Reveal.getIndices();
+    if (indices.h === totalSlides - 1) {
+      curtainTimer = setTimeout(function() {
+        document.body.classList.add('curtains-close');
+      }, 5000);
+    }
+  });
 </script>
 </body>
 </html>
