@@ -680,7 +680,7 @@ public class SubmissionService {
   }
 
   var curtainTimer = null;
-  Reveal.on('final-slide', function() {
+  document.addEventListener('final-slide', function() {
     curtainTimer = setTimeout(function() {
       document.body.classList.add('curtains-close');
     }, 5000);
