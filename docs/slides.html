@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hackathon Prep Bootcamp — Slides</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reset.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/theme/night.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/plugin/highlight/monokai.css" />
+  <style>
+    :root {
+      --accent: #f39c12;
+      --green:  #2ecc71;
+      --red:    #e74c3c;
+      --blue:   #3498db;
+    }
+    .reveal h1, .reveal h2 { color: var(--accent); }
+    .reveal h3 { color: #ecf0f1; }
+    .accent  { color: var(--accent); font-weight: bold; }
+    .green   { color: var(--green);  font-weight: bold; }
+    .red     { color: var(--red);    font-weight: bold; }
+    .blue    { color: var(--blue);   font-weight: bold; }
+
+    .reveal table { font-size: 0.8em; margin: 0 auto; }
+    .reveal table th { background: #2c3e50; color: var(--accent); }
+    .reveal table td { border-color: #444; }
+
+    .pill {
+      display: inline-block;
+      padding: 4px 14px;
+      border-radius: 20px;
+      font-size: 0.75em;
+      font-weight: bold;
+      margin: 4px;
+    }
+    .pill-orange { background: #e67e22; color: #fff; }
+    .pill-green  { background: #27ae60; color: #fff; }
+    .pill-blue   { background: #2980b9; color: #fff; }
+    .pill-red    { background: #c0392b; color: #fff; }
+
+    .two-col { display: flex; gap: 2em; align-items: flex-start; }
+    .two-col > * { flex: 1; }
+
+    .big-number {
+      font-size: 3em;
+      font-weight: 800;
+      color: var(--accent);
+      line-height: 1;
+    }
+    .rule-box {
+      border: 2px solid var(--accent);
+      border-radius: 8px;
+      padding: 0.6em 1em;
+      margin: 0.4em 0;
+      font-size: 0.85em;
+      text-align: left;
+    }
+    .timeline {
+      display: flex;
+      flex-direction: column;
+      gap: 0.3em;
+      font-size: 0.75em;
+      text-align: left;
+    }
+    .timeline-item {
+      display: flex;
+      align-items: center;
+      gap: 1em;
+      padding: 0.4em 0.8em;
+      border-radius: 6px;
+      background: #1a2533;
+    }
+    .timeline-time {
+      color: var(--accent);
+      font-weight: bold;
+      min-width: 80px;
+    }
+    .reveal pre { font-size: 0.55em; }
+    .reveal .slides section { padding: 20px 40px; }
+    footer-note { font-size: 0.5em; color: #888; }
+  </style>
+</head>
+<body>
+<div class="reveal">
+<div class="slides">
+
+<!-- ═══════════════════════════════════════════════
+     SLIDE 1 — TITLE
+═══════════════════════════════════════════════ -->
+<section data-background-gradient="linear-gradient(135deg,#1a1a2e 0%,#16213e 60%,#0f3460 100%)">
+  <h1 style="font-size:1.8em;">Hackathon Prep<br><span style="color:#f39c12;">Bootcamp</span></h1>
+  <p style="font-size:0.9em; color:#bdc3c7;">Core Java · Collections · Spring Boot · MySQL</p>
+  <hr style="border-color:#f39c12; width:40%; margin: 1em auto;" />
+  <p style="font-size:0.7em; color:#95a5a6;">
+    KL University — Skill Development Division<br/>
+    <a href="https://hackathon-java-python.vercel.app/java.html" style="color:#3498db;">110 Industry Problem Statements →</a>
+  </p>
+</section>
+
+<!-- ═══════════════════════════════════════════════
+     SLIDE 2 — WHAT THIS SESSION IS
+═══════════════════════════════════════════════ -->
+<section>
+  <h2>What This Session Is</h2>
+  <div class="two-col" style="margin-top:1em;">
+    <div>
+      <p class="green">✔ You will learn</p>
+      <div class="rule-box">Problem framing skills</div>
+      <div class="rule-box">Core Java patterns</div>
+      <div class="rule-box">Architecture thinking</div>
+      <div class="rule-box">How to design before coding</div>
+    </div>
+    <div>
+      <p class="red">✗ This is NOT</p>
+      <div class="rule-box" style="border-color:#e74c3c;">A syntax tutorial</div>
+      <div class="rule-box" style="border-color:#e74c3c;">A live coding marathon</div>
+      <div class="rule-box" style="border-color:#e74c3c;">Feature overload</div>
+      <div class="rule-box" style="border-color:#e74c3c;">Finishing implementation today</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════
+     SLIDE 3 — MANTRA
+═══════════════════════════════════════════════ -->
+<section data-background="#0f3460">
+  <h2 style="font-size:1.2em; color:#95a5a6;">The session mantra</h2>
+  <p style="font-size:1.6em; font-weight:800; line-height:1.6; margin-top:0.8em;">
+    <span style="color:#e74c3c;">Make it clear</span><br/>
+    <span style="color:#f39c12;">→ Make it correct</span><br/>
+    <span style="color:#2ecc71;">→ Make it clean</span>
+  </p>
+</section>
+
+<!-- ═══════════════════════════════════════════════
+     SLIDE 4 — 3-HOUR AGENDA
+═══════════════════════════════════════════════ -->
+<section>
+  <h2>3-Hour Agenda</h2>
+  <div class="timeline" style="margin-top:0.8em;">
+    <div class="timeline-item"><span class="timeline-time">0:00–0:10</span><span>Opening &amp; Context</span></div>
+    <div class="timeline-item"><span class="timeline-time">0:10–0:25</span><span>Problem Framing Workshop</span></div>
+    <div class="timeline-item"><span class="timeline-time">0:25–0:55</span><span>Core Java Essentials</span></div>
+    <div class="timeline-item"><span class="timeline-time">0:55–1:10</span><span>OOP + Exception Handling</span></div>
+    <div class="timeline-item"><span class="timeline-time">1:10–1:30</span><span>Collections — The Hidden MVP</span></div>
+    <div class="timeline-item"><span class="timeline-time">1:30–2:00</span><span>Spring Boot Blueprint</span></div>
+    <div class="timeline-item"><span class="timeline-time">2:00–2:25</span><span>MySQL + Schema Design</span></div>
+    <div class="timeline-item"><span class="timeline-time">2:25–2:40</span><span>Integration Blueprint</span></div>
+    <div class="timeline-item"><span class="timeline-time">2:40–2:55</span><span>Team Design Sprint</span></div>
+    <div class="timeline-item"><span class="timeline-time">2:55–3:00</span><span>Evaluation Orientation + Close</span></div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════
+     SLIDE 5 — TWO TRACKS
+═══════════════════════════════════════════════ -->
+<section>
+  <h2>Two Delivery Tracks</h2>
+  <div class="two-col" style="margin-top:1em;">
+    <div style="border:2px solid #2ecc71; border-radius:10px; padding:1em;">
+      <p class="green" style="font-size:1.1em;">🟢 Foundation Track</p>
+      <p style="font-size:0.75em; color:#bdc3c7;">Beginners · Module A/B problems</p>
+      <hr style="border-color:#2ecc71;"/>
+      <p>✔ Core Java</p>
+      <p>✔ Collections</p>
+      <p style="color:#888;">✗ Spring Boot</p>
+      <p style="color:#888;">✗ MySQL</p>
+    </div>
+    <div style="border:2px solid #3498db; border-radius:10px; padding:1em;">
+      <p class="blue" style="font-size:1.1em;">🔵 Full-Stack Track</p>
+      <p style="font-size:0.75em; color:#bdc3c7;">Stronger students · Module C+ problems</p>
+      <hr style="border-color:#3498db;"/>
+      <p>✔ Core Java</p>
+      <p>✔ Collections</p>
+      <p>✔ Spring Boot</p>
+      <p>✔ MySQL</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════
+     SLIDE 6 — PROBLEM FRAMING
+═══════════════════════════════════════════════ -->
+<section>
+  <h2>Problem Framing</h2>
+  <p style="font-size:0.8em; color:#bdc3c7;">Convert any statement into an engineering contract</p>
+  <table style="margin-top:0.8em; width:100%;">
+    <tr><th>Point</th><th>Question</th></tr>
+    <tr><td><span class="accent">Inputs</span></td><td>What data comes in?</td></tr>
+    <tr><td><span class="accent">Outputs</span></td><td>What must be produced?</td></tr>
+    <tr><td><span class="accent">Rules</span></td><td>What business logic applies?</td></tr>
+    <tr><td><span class="accent">Edge Cases</span></td><td>Where can logic break silently?</td></tr>
+    <tr><td><span class="accent">Constraints</span></td><td>Any limits on values or formats?</td></tr>
+    <tr><td><span class="accent">Assumptions</span></td><td>What are you assuming when unstated?</td></tr>
+  </table>
+  <p style="font-size:0.7em; color:#f39c12; margin-top:0.8em;">⚡ Rule: If a team can't state inputs/outputs in 2 minutes — they are NOT ready to code</p>
+</section>
+
+<!-- ═══════════════════════════════════════════════
+     SLIDE 7 — CORE JAVA: DATA TYPES
+═══════════════════════════════════════════════ -->
+<section>
+  <h2>Core Java — Data Types &amp; Precision</h2>
+  <p class="red" style="font-size:0.8em;">⚠ Most common silent bug in hackathons</p>
+  <div class="two-col" style="margin-top:0.6em;">
+    <div>
+      <p class="red" style="font-size:0.8em;">❌ Wrong</p>
+      <pre><code class="java">int income = 50000;
+int emi = 22000;
+// gives 0, not 0.44!
+System.out.println(emi / income);</code></pre>
+    </div>
+    <div>
+      <p class="green" style="font-size:0.8em;">✅ Correct</p>
+      <pre><code class="java">int income = 50000;
+int emi = 22000;
+// gives 0.44
+System.out.println(
+  (double) emi / income);</code></pre>
+    </div>
+  </div>
+  <div class="rule-box" style="margin-top:0.6em; font-size:0.75em;">
+    💡 Use <code>double</code> for money &amp; ratios. Round only the <strong>final</strong> output.
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════
+     SLIDE 8 — CORE JAVA: CONTROL FLOW
+═══════════════════════════════════════════════ -->
+<section>
+  <h2>Core Java — Control Flow</h2>
+  <div class="two-col">
+    <div>
+      <p class="accent" style="font-size:0.85em;">Guard clauses — fail early</p>
+      <pre><code class="java">if (income &lt;= 0) {
+  System.out.println(
+    "Invalid: income must be positive");
+  return;
+}
+// safe to proceed</code></pre>
+    </div>
+    <div>
+      <p class="accent" style="font-size:0.85em;">Slab order matters</p>
+      <pre><code class="java">// CORRECT — high first
+if (income &gt;= 1000000)      { ... }
+else if (income &gt;= 500000)  { ... }
+else if (income &gt;= 250000)  { ... }
+// WRONG — low first catches all</code></pre>
+    </div>
+  </div>
+  <p style="font-size:0.7em; color:#bdc3c7; margin-top:0.6em;">
+    Applies to: tax slabs · tariff billing · toll fares · reward tiers
+  </p>
+</section>
+
+<!-- ═══════════════════════════════════════════════
+     SLIDE 9 — CORE JAVA: LOOPS
+═══════════════════════════════════════════════ -->
+<section>
+  <h2>Core Java — Loops &amp; Accumulator</h2>
+  <pre><code class="java">// One pass: min, max, average together
+double total = 0;
+double min = prices[0], max = prices[0];
+
+for (int i = 0; i &lt; prices.length; i++) {
+    total += prices[i];
+    if (prices[i] &lt; min) min = prices[i];
+    if (prices[i] &gt; max) max = prices[i];
+}
+double avg = total / prices.length;</code></pre>
+  <div class="rule-box" style="font-size:0.75em; margin-top:0.6em;">
+    💡 One clean pass &gt; multiple loops. Watch off-by-one at slab boundaries.
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════
+     SLIDE 10 — CORE JAVA: METHOD DECOMPOSITION
+═══════════════════════════════════════════════ -->
+<section>
+  <h2>Method Decomposition</h2>
+  <p style="font-size:0.8em; color:#bdc3c7;">One method = one responsibility</p>
+  <pre><code class="java">public static void main(String[] args) {
+    String input  = readInput();
+    if (!validateInput(input)) return;
+    double result = computeResult(input);
+    printOutput(result);
+}</code></pre>
+  <div style="display:flex; gap:1em; margin-top:0.8em; font-size:0.75em;">
+    <div class="rule-box" style="flex:1;">📥 <strong>readInput()</strong><br/>Collect raw data</div>
+    <div class="rule-box" style="flex:1;">🛡 <strong>validateInput()</strong><br/>Guard clauses</div>
+    <div class="rule-box" style="flex:1;">⚙️ <strong>computeResult()</strong><br/>Business logic</div>
+    <div class="rule-box" style="flex:1;">📤 <strong>printOutput()</strong><br/>Format &amp; display</div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════
+     SLIDE 11 — OOP
+═══════════════════════════════════════════════ -->
+<section>
+  <h2>OOP — When to Use Classes</h2>
+  <div class="two-col">
+    <div>
+      <p class="red" style="font-size:0.8em;">❌ Parallel arrays — de-sync nightmare</p>
+      <pre><code class="java">String[] names    = {"Alice","Bob"};
+double[] salaries = {50000, 60000};
+// One update forgets the other!</code></pre>
+    </div>
+    <div>
+      <p class="green" style="font-size:0.8em;">✅ Encapsulated object</p>
+      <pre><code class="java">class Employee {
+  private String name;
+  private double basicSalary;
+
+  public double computeNetPay() {
+    double hra = basicSalary * 0.4;
+    double pf  = basicSalary * 0.12;
+    return basicSalary + hra - pf;
+  }
+}</code></pre>
+    </div>
+  </div>
+  <p style="font-size:0.75em; color:#f39c12; margin-top:0.6em;">
+    Use OOP when behavior differs by type or multiple fields travel together.
+  </p>
+</section>
+
+<!-- ═══════════════════════════════════════════════
+     SLIDE 12 — COLLECTIONS
+═══════════════════════════════════════════════ -->
+<section>
+  <h2>Collections — The Hidden MVP</h2>
+  <table style="margin-top:0.6em; width:100%; font-size:0.78em;">
+    <tr><th>Need</th><th>Use</th><th>Example</th></tr>
+    <tr><td>Ordered items</td><td><code>List&lt;T&gt;</code></td><td>Cart, price ticks, log lines</td></tr>
+    <tr><td>No duplicates</td><td><code>Set&lt;T&gt;</code></td><td>Unique customers, keywords</td></tr>
+    <tr><td>Key→Value lookup</td><td><code>Map&lt;K,V&gt;</code></td><td>Word counts, category rates</td></tr>
+    <tr><td>FIFO queue</td><td><code>Queue&lt;T&gt;</code></td><td>ATM queue, task scheduler</td></tr>
+  </table>
+  <div class="rule-box" style="margin-top:0.8em; font-size:0.78em;">
+    💡 <strong>Choose by behavior, not by habit.</strong><br/>
+    Most hackathon problems need <code>Map&lt;String, Integer&gt;</code> for counting or lookup.
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════
+     SLIDE 13 — COLLECTIONS: MAP EXAMPLE
+═══════════════════════════════════════════════ -->
+<section>
+  <h2>Collections — Map in Action</h2>
+  <pre><code class="java">// Keyword frequency counter (Log Analyzer problem)
+Map&lt;String, Integer&gt; freq = new HashMap&lt;&gt;();
+String[] tokens = log.split("\\s+");
+
+for (String token : tokens) {
+    freq.put(token, freq.getOrDefault(token, 0) + 1);
+}
+
+// Print top keywords
+freq.entrySet().stream()
+    .sorted(Map.Entry.&lt;String,Integer&gt;comparingByValue().reversed())
+    .limit(5)
+    .forEach(e -&gt; System.out.println(e.getKey() + " : " + e.getValue()));</code></pre>
+  <p style="font-size:0.7em; color:#bdc3c7; margin-top:0.4em;">Applies to: PS-17 Log Keyword Counter · PS-10 Reward Points · PS-18 CRM Dedup</p>
+</section>
+
+<!-- ═══════════════════════════════════════════════
+     SLIDE 14 — SPRING BOOT ARCHITECTURE
+═══════════════════════════════════════════════ -->
+<section>
+  <h2>Spring Boot — Layered Architecture</h2>
+  <div style="font-size:0.85em; margin-top:0.8em; line-height:2.2;">
+    <div style="background:#1a2533; border-radius:8px; padding:0.5em 1.5em; margin-bottom:0.3em;">
+      🌐 <strong>Client</strong> <span style="color:#888;">(Browser / Postman)</span>
+    </div>
+    <div style="text-align:center; color:#f39c12;">↓ HTTP Request</div>
+    <div style="background:#0f3460; border-radius:8px; padding:0.5em 1.5em; margin-bottom:0.3em; border:1px solid #3498db;">
+      🎯 <strong>Controller</strong> <span style="color:#3498db;">— thin, validates &amp; routes</span>
+    </div>
+    <div style="text-align:center; color:#f39c12;">↓</div>
+    <div style="background:#0f3460; border-radius:8px; padding:0.5em 1.5em; margin-bottom:0.3em; border:1px solid #f39c12;">
+      ⚙️ <strong>Service</strong> <span style="color:#f39c12;">— ALL business logic lives here</span>
+    </div>
+    <div style="text-align:center; color:#f39c12;">↓</div>
+    <div style="background:#0f3460; border-radius:8px; padding:0.5em 1.5em; border:1px solid #2ecc71;">
+      🗄 <strong>Repository</strong> <span style="color:#2ecc71;">— only fetches &amp; saves</span>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════
+     SLIDE 15 — SPRING BOOT: CODE SKELETON
+═══════════════════════════════════════════════ -->
+<section>
+  <h2>Spring Boot — Minimal Skeleton</h2>
+  <div class="two-col" style="font-size:0.9em;">
+    <div>
+      <p class="accent" style="font-size:0.8em;">Controller (thin)</p>
+      <pre><code class="java">@RestController
+@RequestMapping("/api/submissions")
+public class SubmissionController {
+  @Autowired SubmissionService svc;
+
+  @PostMapping
+  public ResponseEntity&lt;?&gt; create(
+      @RequestBody Submission s) {
+    return ResponseEntity.ok(
+      svc.create(s));
+  }
+}</code></pre>
+    </div>
+    <div>
+      <p class="accent" style="font-size:0.8em;">Service (logic)</p>
+      <pre><code class="java">@Service
+public class SubmissionService {
+  @Autowired SubmissionRepository repo;
+
+  public Submission create(Submission s) {
+    if (s.getStudentName() == null)
+      throw new IllegalArgumentException(
+        "Name required");
+    s.setStatus("SUBMITTED");
+    return repo.save(s);
+  }
+}</code></pre>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════
+     SLIDE 16 — MYSQL SCHEMA DESIGN
+═══════════════════════════════════════════════ -->
+<section>
+  <h2>MySQL — Schema Design First</h2>
+  <p style="font-size:0.8em; color:#bdc3c7;">3 questions before writing SQL</p>
+  <div style="display:flex; gap:0.8em; margin:0.6em 0; font-size:0.8em;">
+    <div class="rule-box" style="flex:1;">1️⃣ What are my <span class="accent">entities</span>?</div>
+    <div class="rule-box" style="flex:1;">2️⃣ What are their <span class="accent">relationships</span>?</div>
+    <div class="rule-box" style="flex:1;">3️⃣ What will I <span class="accent">query</span> most?</div>
+  </div>
+  <pre><code class="sql">CREATE TABLE submissions (
+    id           INT PRIMARY KEY AUTO_INCREMENT,
+    student_id   INT NOT NULL,
+    project_id   INT NOT NULL,
+    submitted_at DATETIME DEFAULT NOW(),
+    status       ENUM('SUBMITTED','EVALUATED',
+                      'PASSED','FAILED')
+                 DEFAULT 'SUBMITTED',
+    score        DECIMAL(5,2),
+    FOREIGN KEY (student_id) REFERENCES students(id),
+    FOREIGN KEY (project_id) REFERENCES projects(id)
+);</code></pre>
+</section>
+
+<!-- ═══════════════════════════════════════════════
+     SLIDE 17 — INTEGRATION BLUEPRINT
+═══════════════════════════════════════════════ -->
+<section>
+  <h2>Integration Blueprint</h2>
+  <div class="two-col" style="font-size:0.8em; margin-top:0.8em;">
+    <div>
+      <p class="green">✅ Happy Path</p>
+      <div class="rule-box">1. Request arrives at Controller</div>
+      <div class="rule-box">2. Controller validates required fields</div>
+      <div class="rule-box">3. Service checks business rules</div>
+      <div class="rule-box">4. Repository saves to MySQL</div>
+      <div class="rule-box">5. Return 200 OK + data</div>
+    </div>
+    <div>
+      <p class="red">❌ Error Paths</p>
+      <div class="rule-box" style="border-color:#e74c3c;">Missing field → 400 Bad Request</div>
+      <div class="rule-box" style="border-color:#e74c3c;">Rule violated → 422 + message</div>
+      <div class="rule-box" style="border-color:#e74c3c;">Not found → 404</div>
+      <div class="rule-box" style="border-color:#e74c3c;">DB error → 500</div>
+    </div>
+  </div>
+  <p style="font-size:0.72em; color:#f39c12; margin-top:0.6em;">
+    ⚡ Design happy path AND failure path together.
+  </p>
+</section>
+
+<!-- ═══════════════════════════════════════════════
+     SLIDE 18 — TEAM DESIGN SPRINT
+═══════════════════════════════════════════════ -->
+<section>
+  <h2>Team Design Sprint</h2>
+  <p style="font-size:0.8em; color:#bdc3c7;">Produce these before you leave today</p>
+  <div style="display:grid; grid-template-columns:1fr 1fr; gap:0.6em; margin-top:0.6em; font-size:0.8em;">
+    <div class="rule-box">📋 <strong>Problem Brief</strong><br/>Inputs · Outputs · Rules · Edges</div>
+    <div class="rule-box">🏗 <strong>Method Breakdown</strong><br/>Name · Input · Output · Does</div>
+    <div class="rule-box">🗄 <strong>DB Schema</strong> (if Full-Stack)<br/>Tables · Keys · Relations</div>
+    <div class="rule-box">🧪 <strong>8 Test Cases</strong><br/>3 Normal · 3 Edge · 2 Invalid</div>
+  </div>
+  <div class="rule-box" style="margin-top:0.6em; font-size:0.78em; border-color:#2ecc71;">
+    🚀 Build Order: Input → Logic → Output → Edges → Spring layers → DB → Tests
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════
+     SLIDE 19 — EVALUATION RUBRIC
+═══════════════════════════════════════════════ -->
+<section>
+  <h2>Evaluation Rubric</h2>
+  <table style="margin-top:0.8em; width:100%;">
+    <tr><th>Criteria</th><th>Weight</th></tr>
+    <tr><td>Correctness</td><td><span class="accent">40%</span></td></tr>
+    <tr><td>Edge-case + validation coverage</td><td><span class="accent">25%</span></td></tr>
+    <tr><td>Code structure (layering, methods)</td><td><span class="accent">20%</span></td></tr>
+    <tr><td>DB schema quality</td><td><span class="accent">10%</span></td></tr>
+    <tr><td>Explanation + design clarity</td><td><span class="accent">5%</span></td></tr>
+  </table>
+  <p style="font-size:0.72em; color:#bdc3c7; margin-top:0.8em;">
+    Submission must include: Source code · README · Sample I/O · Known limitations
+  </p>
+</section>
+
+<!-- ═══════════════════════════════════════════════
+     SLIDE 20 — FIVE PRINCIPLES
+═══════════════════════════════════════════════ -->
+<section data-background-gradient="linear-gradient(135deg,#0f3460 0%,#1a1a2e 100%)">
+  <h2>5 Principles to Repeat</h2>
+  <div style="font-size:0.8em; margin-top:0.8em;">
+    <div class="rule-box">1. <span class="accent">"Don't code what you haven't reasoned about."</span></div>
+    <div class="rule-box">2. <span class="accent">"Validate input early, fail clearly, never silently."</span></div>
+    <div class="rule-box">3. <span class="accent">"Controller is thin. Service owns logic. Repository only fetches."</span></div>
+    <div class="rule-box">4. <span class="accent">"Collections are chosen by behavior, not convenience."</span></div>
+    <div class="rule-box">5. <span class="accent">"Bad schema = bad code. Model data first."</span></div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════
+     SLIDE 21 — CLOSE
+═══════════════════════════════════════════════ -->
+<section data-background-gradient="linear-gradient(135deg,#1a1a2e 0%,#0f3460 100%)">
+  <h2>You're Ready. Go Build.</h2>
+  <p style="font-size:1em; color:#bdc3c7; margin-top:1em; line-height:1.8;">
+    Your design is clear.<br/>
+    Your test cases are written.<br/>
+    <span style="color:#f39c12; font-weight:bold;">Implementation is just execution now.</span>
+  </p>
+  <hr style="border-color:#f39c12; width:30%; margin:1.2em auto;" />
+  <p style="font-size:0.7em; color:#95a5a6;">
+    📋 <a href="index.html" style="color:#3498db;">Full Lecture Notes →</a><br/>
+    🔗 <a href="https://hackathon-java-python.vercel.app/java.html" style="color:#3498db;">Problem Bank →</a>
+  </p>
+</section>
+
+</div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/plugin/highlight/highlight.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/plugin/notes/notes.js"></script>
+<script>
+  Reveal.initialize({
+    hash: true,
+    slideNumber: 'c/t',
+    transition: 'slide',
+    transitionSpeed: 'fast',
+    controls: true,
+    progress: true,
+    center: true,
+    plugins: [ RevealHighlight, RevealNotes ]
+  });
+</script>
+</body>
+</html>
