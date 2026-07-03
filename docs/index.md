@@ -298,25 +298,18 @@ double min = Collections.min(prices);
 
 ### Map — Key-value counting and lookup
 ```java
-// Keyword frequency counter
 Map<String, Integer> freq = new HashMap<>();
 String[] tokens = log.split("\\s+");
 
 for (String token : tokens) {
     freq.put(token, freq.getOrDefault(token, 0) + 1);
 }
-
-// Print sorted by frequency
-freq.entrySet().stream()
-    .sorted(Map.Entry.<String, Integer>comparingByValue().reversed())
-    .forEach(e -> System.out.println(e.getKey() + " : " + e.getValue()));
 ```
 
 ---
 
 ### Set — Deduplication
 ```java
-// Find unique customers from transaction list
 Set<String> uniqueCustomers = new HashSet<>(transactionList);
 System.out.println("Unique customers: " + uniqueCustomers.size());
 ```
@@ -328,7 +321,6 @@ System.out.println("Unique customers: " + uniqueCustomers.size());
 | Problem | Collection | Why |
 |---------|-----------|-----|
 | Log keyword counter | `Map<String, Integer>` | count per keyword |
-| Seat allocation map | `boolean[][]` (2D array) | grid state |
 | Customer dedup key | `Map<String, List<String>>` | canonical key → names |
 | Monthly sales heatmap | `Map<String, Map<String, Double>>` | region → month → sales |
 | Reward point categories | `Map<String, Double>` | category → accumulated spend |
@@ -409,10 +401,6 @@ public class SubmissionService {
         s.setStatus("SUBMITTED");
         return repo.save(s);
     }
-
-    public List<Submission> getAll() {
-        return repo.findAll();
-    }
 }
 ```
 
@@ -428,11 +416,6 @@ public class SubmissionController {
     public ResponseEntity<Submission> create(@RequestBody Submission s) {
         return ResponseEntity.ok(service.create(s));
     }
-
-    @GetMapping
-    public List<Submission> getAll() {
-        return service.getAll();
-    }
 }
 ```
 
@@ -440,7 +423,7 @@ public class SubmissionController {
 
 ### What to emphasize
 - Controller is **thin** — no logic, just routing
-- Service owns **all rules** — if someone asks "where is the business logic?", answer is always "service"
+- Service owns **all rules**
 - Repository never decides anything — just fetches and saves
 
 ---
@@ -459,31 +442,14 @@ public class SubmissionController {
 
 ---
 
-### Schema design from a real problem
-
-**Problem: Hackathon submission tracker**
-
-Step 1 — List entities:
-- Student, Project, Submission
-
-Step 2 — Map relationships:
-- Student **submits** one Project → Submission links them
-
-Step 3 — Schema:
+### Schema example
 
 ```sql
 CREATE TABLE students (
-    id          INT PRIMARY KEY AUTO_INCREMENT,
-    name        VARCHAR(100) NOT NULL,
-    email       VARCHAR(100) UNIQUE NOT NULL,
-    team        VARCHAR(50)
-);
-
-CREATE TABLE projects (
-    id          INT PRIMARY KEY AUTO_INCREMENT,
-    title       VARCHAR(200) NOT NULL,
-    domain      VARCHAR(100),
-    difficulty  ENUM('Beginner', 'Intermediate', 'Advanced')
+    id    INT PRIMARY KEY AUTO_INCREMENT,
+    name  VARCHAR(100) NOT NULL,
+    email VARCHAR(100) UNIQUE NOT NULL,
+    team  VARCHAR(50)
 );
 
 CREATE TABLE submissions (
@@ -500,40 +466,6 @@ CREATE TABLE submissions (
 
 ---
 
-### Essential SQL to know for the hackathon
-
-```sql
--- Insert
-INSERT INTO students (name, email, team) VALUES ('Ravi', 'ravi@kl.edu', 'Team A');
-
--- Read with joins
-SELECT s.name, p.title, sub.score
-FROM submissions sub
-JOIN students s ON sub.student_id = s.id
-JOIN projects p ON sub.project_id = p.id
-WHERE sub.status = 'EVALUATED';
-
--- Update
-UPDATE submissions SET score = 87.5, status = 'PASSED' WHERE id = 1;
-
--- Aggregate
-SELECT p.domain, AVG(sub.score) as avg_score
-FROM submissions sub
-JOIN projects p ON sub.project_id = p.id
-GROUP BY p.domain;
-```
-
----
-
-### Schema checklist
-- Every table has a primary key
-- Foreign keys link related tables
-- No repeated data columns (normalize)
-- ENUM for fixed-value columns
-- Timestamps for traceability
-
----
-
 ## 2:25–2:40 | Integration Blueprint
 
 ### End-to-end request lifecycle
@@ -541,50 +473,34 @@ GROUP BY p.domain;
 ```
 POST /api/submissions
         ↓
-Controller: extract body, validate not null
+Controller: validate fields
         ↓
-Service: check business rules (no duplicate, valid project ID)
+Service: apply business rules
         ↓
 Repository: save to MySQL
         ↓
-DB: persists row
-        ↓
-Service: returns saved entity
-        ↓
-Controller: wraps in 200 OK response
-        ↓
-Client: receives JSON
+Controller: return 200 OK response
 ```
 
 ### Error path design
 
 | Failure | Where caught | Response |
 |---------|-------------|----------|
-| Missing field | Controller/DTO validation | 400 Bad Request |
-| Business rule violated | Service layer | 422 with message |
-| Record not found | Service layer | 404 Not Found |
-| DB error | Repository/global handler | 500 Internal Error |
-
-### What to say
-> "Design happy path and failure path together. A system that only works for perfect inputs is not a system."
+| Missing field | Controller | 400 Bad Request |
+| Business rule violated | Service | 422 with message |
+| Record not found | Service | 404 Not Found |
+| DB error | Global handler | 500 Internal Error |
 
 ---
 
 ## 2:40–2:55 | Team Design Sprint
 
-### What teams produce in this block
-Each team creates their **Design Doc** (Handout 2):
-
+Each team produces:
 1. Problem brief (inputs/outputs/rules/edge cases)
 2. Method breakdown
 3. DB schema (if applicable)
-4. Tech stack decision (Foundation or Full-Stack track)
-5. Test case sheet (Handout 3)
-
-### Mentor review questions during this block
-- "Show me your edge cases"
-- "Which layer holds your main business rule?"
-- "What breaks if the input is null or zero?"
+4. Tech stack decision (Foundation or Full-Stack)
+5. Test case sheet (min 8 cases)
 
 ---
 
@@ -600,16 +516,9 @@ Each team creates their **Design Doc** (Handout 2):
 | DB schema quality | 10% |
 | Explanation + design clarity | 5% |
 
-### Submission package expected
-- Source code
-- README (problem + approach + assumptions)
-- Test cases with actual output
-- Known limitations
-
 ### Closing script
 > "If your design is clear and your test cases are written, implementation is just execution.  
-> Don't improvise blindly. Follow your own plan, validate every rule, and trust your design.  
-> You already have the hardest part done."
+> Don't improvise blindly. Follow your own plan, validate every rule, and trust your design."
 
 ---
 
@@ -620,30 +529,12 @@ Team Name      :
 Problem ID     :
 Problem Title  :
 
-INPUTS
--
--
-
-OUTPUTS
--
--
-
-BUSINESS RULES
-1.
-2.
-3.
-
-EDGE CASES
-1.
-2.
-3.
-
-ASSUMPTIONS
-1.
-2.
-
-SUCCESS CRITERIA
--
+INPUTS         :
+OUTPUTS        :
+BUSINESS RULES :
+EDGE CASES     :
+ASSUMPTIONS    :
+SUCCESS CRITERIA:
 ```
 
 ---
@@ -651,56 +542,35 @@ SUCCESS CRITERIA
 ## Handout 2 — Design Doc Template
 
 ```
-TECH TRACK        : Foundation / Full-Stack
+TECH TRACK     : Foundation / Full-Stack
+METHOD BREAKDOWN:
+  Method name  :
+  - Input      :
+  - Output     :
+  - Does       :
 
-METHOD BREAKDOWN
-Method name       :
-  - Input         :
-  - Output        :
-  - Responsibility:
-
-(repeat for each method)
-
-DB SCHEMA (if applicable)
-Table             :
-  Columns         :
-  Relationships   :
-
-COLLECTIONS USED
-- Map / List / Set:  for what purpose
-
-BUILD ORDER
-1. Input + validation
-2. Core logic
-3. Output format
-4. Edge cases
-5. Spring Boot layers (Full-Stack only)
-6. DB integration (Full-Stack only)
-7. Final test run
+DB SCHEMA      :
+COLLECTIONS    :
+BUILD ORDER    : 1→input  2→logic  3→output  4→edges  5→layers  6→tests
 ```
 
 ---
 
 ## Handout 3 — Test Case Template
 
-```
-Test ID    :
-Type       : Normal / Edge / Invalid
-Input      :
-Expected   :
-Reason     : Why this case matters
-```
+Minimum **8 test cases** per team (3 normal · 3 edge · 2 invalid):
 
-Minimum **8 test cases** per team:
-- 3 normal
-- 3 edge (boundary, zero, max)
-- 2 invalid input
+```
+Test ID  :
+Type     : Normal / Edge / Invalid
+Input    :
+Expected :
+Reason   :
+```
 
 ---
 
-## Quick Reference Card — Repeating Principles
-
-> Use these lines throughout the session to anchor discipline:
+## Quick Reference — Repeating Principles
 
 1. **"Don't code what you haven't reasoned about."**
 2. **"Validate input early, fail clearly, never silently."**
@@ -710,5 +580,6 @@ Minimum **8 test cases** per team:
 
 ---
 
-*Facilitator notes for KL University Skill Development Division Hackathon*  
-*Problem Bank: https://hackathon-java-python.vercel.app/java.html*
+📊 **[View as Presentation →](slides.html)**
+
+*KL University Skill Development Division · Problem Bank: https://hackathon-java-python.vercel.app/java.html*
