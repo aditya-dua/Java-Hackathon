@@ -88,8 +88,8 @@
 
 <!-- ═══ SLIDE 3: MANTRA ═══ -->
 <section data-background="#0f3460">
-  <h2 style="font-size:1.2em;color:#95a5a6;">The session mantra</h2>
-  <p style="font-size:1.6em;font-weight:800;line-height:1.8;margin-top:.8em;">
+  <h2 style="font-size:1em;color:#95a5a6;margin-bottom:.4em;">The session mantra</h2>
+  <p style="font-size:1.3em;font-weight:800;line-height:1.6;margin:0;">
     <span style="color:#e74c3c;">Make it clear</span><br/>
     <span style="color:#f39c12;">→ Make it correct</span><br/>
     <span style="color:#2ecc71;">→ Make it clean</span>
@@ -99,7 +99,7 @@
 <!-- ═══ SLIDE 4: AGENDA ═══ -->
 <section>
   <h2>3-Hour Agenda</h2>
-  <div class="timeline" style="margin-top:.8em;">
+  <div class="timeline" style="margin-top:.4em;font-size:.7em;">
     <div class="timeline-item"><span class="timeline-time">0:00–0:10</span><span>Opening &amp; Context</span></div>
     <div class="timeline-item"><span class="timeline-time">0:10–0:25</span><span>Problem Framing Workshop</span></div>
     <div class="timeline-item"><span class="timeline-time">0:25–0:55</span><span>Core Java Essentials</span></div>
@@ -246,7 +246,7 @@ double avg = total / prices.length;</code></pre>
 
 <!-- ═══ SLIDE 10b: SPOT THE BUG QUIZ ═══ -->
 <section data-background="#1a0a00">
-  <h2>🐛 Quiz — Spot the Bug <span class="badge-fun badge-quiz">Interactive</span></h2>
+  <h2>🐛 Spot the Bug</h2>
   <p class="quiz-q">What does this print?</p>
   <pre><code class="java">int marks = 450;
 int total = 500;
@@ -266,33 +266,31 @@ System.out.println("Percentage: " + marks/total * 100);</code></pre>
 <!-- ═══ SLIDE 11: OOP ═══ -->
 <section>
   <h2>OOP — Class, Inheritance &amp; Subclass</h2>
-  <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:.7em;margin-top:.6em;font-size:.78em;">
-    <div class="rule-box" style="border-color:#2ecc71;">
-      <p style="color:#2ecc71;font-weight:bold;margin:0 0 .3em;">🏗 Use a Class when</p>
-      <p style="margin:0;">Multiple fields + behavior belong together<br/><br/>
-      <code style="font-size:.85em;">Employee</code> has name, salary, computePay()</p>
+  <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:.5em;margin-top:.4em;font-size:.72em;">
+    <div class="rule-box" style="border-color:#2ecc71;padding:.5em .7em;">
+      <p style="color:#2ecc71;font-weight:bold;margin:0 0 .2em;">🏗 Use a Class when</p>
+      <p style="margin:0;">Multiple fields + behavior belong together<br/>
+      <code style="font-size:.85em;">Employee</code> — name, salary, computePay()</p>
     </div>
-    <div class="rule-box" style="border-color:#3498db;">
-      <p style="color:#3498db;font-weight:bold;margin:0 0 .3em;">🧬 Use Inheritance when</p>
-      <p style="margin:0;"><strong>"IS-A"</strong> relationship exists<br/><br/>
+    <div class="rule-box" style="border-color:#3498db;padding:.5em .7em;">
+      <p style="color:#3498db;font-weight:bold;margin:0 0 .2em;">🧬 Use Inheritance when</p>
+      <p style="margin:0;"><strong>"IS-A"</strong> relationship exists<br/>
       <code style="font-size:.85em;">SavingsAccount</code> IS-A <code>Account</code></p>
     </div>
-    <div class="rule-box" style="border-color:#f39c12;">
-      <p style="color:#f39c12;font-weight:bold;margin:0 0 .3em;">🔧 Use Subclass when</p>
-      <p style="margin:0;">Behavior <em>differs</em> by type<br/><br/>
-      <code style="font-size:.85em;">FDAccount</code> has lock-in; <code>CurrentAccount</code> has overdraft</p>
+    <div class="rule-box" style="border-color:#f39c12;padding:.5em .7em;">
+      <p style="color:#f39c12;font-weight:bold;margin:0 0 .2em;">🔧 Use Subclass when</p>
+      <p style="margin:0;">Behavior <em>differs</em> by type<br/>
+      <code style="font-size:.85em;">FDAccount</code> lock-in vs <code>CurrentAccount</code> overdraft</p>
     </div>
   </div>
-  <div style="display:flex;gap:.7em;margin-top:.6em;font-size:.75em;">
-    <div class="rule-box" style="flex:1;border-color:#9b59b6;">
-      <strong style="color:#9b59b6;">IS-A</strong> → Inheritance<br/>
-      <code>Dog IS-A Animal</code><br/>
-      <code>SavingsAccount IS-A Account</code>
+  <div style="display:flex;gap:.5em;margin-top:.5em;font-size:.72em;">
+    <div class="rule-box" style="flex:1;border-color:#9b59b6;padding:.5em .7em;">
+      <strong style="color:#9b59b6;">IS-A → Inheritance</strong><br/>
+      <code>Dog IS-A Animal</code> &nbsp;·&nbsp; <code>SavingsAccount IS-A Account</code>
     </div>
-    <div class="rule-box" style="flex:1;border-color:#e67e22;">
-      <strong style="color:#e67e22;">HAS-A</strong> → Composition<br/>
-      <code>Car HAS-A Engine</code><br/>
-      <code>Employee HAS-A Address</code>
+    <div class="rule-box" style="flex:1;border-color:#e67e22;padding:.5em .7em;">
+      <strong style="color:#e67e22;">HAS-A → Composition</strong><br/>
+      <code>Car HAS-A Engine</code> &nbsp;·&nbsp; <code>Employee HAS-A Address</code>
     </div>
   </div>
 </section>
@@ -300,14 +298,14 @@ System.out.println("Percentage: " + marks/total * 100);</code></pre>
 <!-- ═══ SLIDE 12: COLLECTIONS TABLE ═══ -->
 <section>
   <h2>Collections — The Hidden MVP</h2>
-  <table style="margin-top:.6em;width:100%;font-size:.78em;">
+  <table style="margin-top:.4em;width:100%;font-size:.75em;">
     <tr><th>Need</th><th>Use</th><th>Example</th></tr>
     <tr><td>Ordered items</td><td><code>List&lt;T&gt;</code></td><td>Cart, price ticks, log lines</td></tr>
     <tr><td>No duplicates</td><td><code>Set&lt;T&gt;</code></td><td>Unique customers, keywords</td></tr>
     <tr><td>Key→Value lookup</td><td><code>Map&lt;K,V&gt;</code></td><td>Word counts, category rates</td></tr>
     <tr><td>FIFO queue</td><td><code>Queue&lt;T&gt;</code></td><td>ATM queue, task scheduler</td></tr>
   </table>
-  <div class="rule-box" style="margin-top:.8em;font-size:.78em;">
+  <div class="rule-box" style="margin-top:.5em;font-size:.75em;">
     💡 <strong>Choose by behavior, not by habit.</strong>
   </div>
 </section>
@@ -375,38 +373,34 @@ System.out.println("Percentage: " + marks/total * 100);</code></pre>
 <!-- ═══ SLIDE 14: SPRING BOOT ARCHITECTURE ═══ -->
 <section>
   <h2>Spring Boot — Client-Server Architecture</h2>
-  <div style="margin-top:.5em;">
-    <!-- Architecture diagram using CSS boxes -->
-    <div style="display:flex;flex-direction:column;align-items:center;gap:0;font-size:.78em;">
-      <!-- Client -->
-      <div style="background:#1a3a5c;border:2px solid #3498db;border-radius:10px;padding:.5em 2em;width:60%;text-align:center;">
+  <div style="margin-top:.3em;">
+    <div style="display:flex;flex-direction:column;align-items:center;gap:0;font-size:.72em;">
+      <div style="background:#1a3a5c;border:2px solid #3498db;border-radius:8px;padding:.35em 1.5em;width:55%;text-align:center;">
         🌐 <strong style="color:#3498db;">Client</strong>
-        <span style="color:#888;font-size:.85em;"> — Browser / Mobile App / Postman</span>
+        <span style="color:#888;font-size:.85em;"> — Browser / Mobile / Postman</span>
       </div>
-      <div style="color:#f39c12;font-size:1.2em;line-height:1;">↕ HTTP (JSON)</div>
-      <!-- Server box -->
-      <div style="border:2px dashed #f39c12;border-radius:12px;padding:.8em 1em;width:70%;background:#0a0a1a;">
-        <p style="color:#f39c12;font-size:.8em;font-weight:bold;margin:0 0 .5em;text-align:center;">☕ Spring Boot Server</p>
-        <div style="display:flex;flex-direction:column;gap:.3em;">
-          <div style="background:#0f3460;border:1px solid #3498db;border-radius:6px;padding:.4em .8em;">
+      <div style="color:#f39c12;font-size:1em;line-height:1.2;">↕ HTTP (JSON)</div>
+      <div style="border:2px dashed #f39c12;border-radius:10px;padding:.5em .8em;width:65%;background:#0a0a1a;">
+        <p style="color:#f39c12;font-size:.8em;font-weight:bold;margin:0 0 .3em;text-align:center;">☕ Spring Boot Server</p>
+        <div style="display:flex;flex-direction:column;gap:.2em;">
+          <div style="background:#0f3460;border:1px solid #3498db;border-radius:5px;padding:.3em .7em;">
             🎯 <strong style="color:#3498db;">Controller</strong>
-            <span style="color:#888;font-size:.85em;"> — receives request, validates input, sends response</span>
+            <span style="color:#888;font-size:.85em;"> — routes &amp; validates</span>
           </div>
-          <div style="text-align:center;color:#888;font-size:.9em;">↕ method call</div>
-          <div style="background:#0f3020;border:1px solid #f39c12;border-radius:6px;padding:.4em .8em;">
+          <div style="text-align:center;color:#555;font-size:.85em;">↕</div>
+          <div style="background:#0f3020;border:1px solid #f39c12;border-radius:5px;padding:.3em .7em;">
             ⚙️ <strong style="color:#f39c12;">Service</strong>
-            <span style="color:#888;font-size:.85em;"> — ALL business logic &amp; rules live here</span>
+            <span style="color:#888;font-size:.85em;"> — ALL business logic lives here</span>
           </div>
-          <div style="text-align:center;color:#888;font-size:.9em;">↕ method call</div>
-          <div style="background:#0f2020;border:1px solid #2ecc71;border-radius:6px;padding:.4em .8em;">
+          <div style="text-align:center;color:#555;font-size:.85em;">↕</div>
+          <div style="background:#0f2020;border:1px solid #2ecc71;border-radius:5px;padding:.3em .7em;">
             🗄 <strong style="color:#2ecc71;">Repository</strong>
-            <span style="color:#888;font-size:.85em;"> — only fetches and saves data</span>
+            <span style="color:#888;font-size:.85em;"> — only fetches &amp; saves</span>
           </div>
         </div>
       </div>
-      <div style="color:#f39c12;font-size:1.2em;line-height:1;">↕ SQL (JPA)</div>
-      <!-- DB -->
-      <div style="background:#1a0a3c;border:2px solid #9b59b6;border-radius:10px;padding:.5em 2em;width:60%;text-align:center;">
+      <div style="color:#f39c12;font-size:1em;line-height:1.2;">↕ SQL (JPA)</div>
+      <div style="background:#1a0a3c;border:2px solid #9b59b6;border-radius:8px;padding:.35em 1.5em;width:55%;text-align:center;">
         🐬 <strong style="color:#9b59b6;">MySQL Database</strong>
         <span style="color:#888;font-size:.85em;"> — persists data</span>
       </div>
@@ -553,14 +547,14 @@ public class SubmissionService {
 <!-- ═══ SLIDE 18: TEAM DESIGN SPRINT ═══ -->
 <section>
   <h2>Team Design Sprint</h2>
-  <p style="font-size:.8em;color:#bdc3c7;">Produce these before you leave today</p>
-  <div style="display:grid;grid-template-columns:1fr 1fr;gap:.6em;margin-top:.6em;font-size:.8em;">
-    <div class="rule-box">📋 <strong>Problem Brief</strong><br/>Inputs · Outputs · Rules · Edges</div>
-    <div class="rule-box">🏗 <strong>Method Breakdown</strong><br/>Name · Input · Output · Does</div>
-    <div class="rule-box">🗄 <strong>DB Schema</strong> (Full-Stack only)<br/>Tables · Keys · Relations</div>
-    <div class="rule-box">🧪 <strong>8 Test Cases</strong><br/>3 Normal · 3 Edge · 2 Invalid</div>
+  <p style="font-size:.75em;color:#bdc3c7;margin:.2em 0 .5em;">Produce these before you leave today</p>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:.5em;font-size:.75em;">
+    <div class="rule-box" style="padding:.5em .7em;">📋 <strong>Problem Brief</strong><br/>Inputs · Outputs · Rules · Edges</div>
+    <div class="rule-box" style="padding:.5em .7em;">🏗 <strong>Method Breakdown</strong><br/>Name · Input · Output · Does</div>
+    <div class="rule-box" style="padding:.5em .7em;">🗄 <strong>DB Schema</strong> (Full-Stack only)<br/>Tables · Keys · Relations</div>
+    <div class="rule-box" style="padding:.5em .7em;">🧪 <strong>8 Test Cases</strong><br/>3 Normal · 3 Edge · 2 Invalid</div>
   </div>
-  <div class="rule-box" style="margin-top:.6em;font-size:.78em;border-color:#2ecc71;">
+  <div class="rule-box" style="margin-top:.5em;font-size:.72em;border-color:#2ecc71;padding:.5em .7em;">
     🚀 Build Order: Input → Logic → Output → Edges → Spring layers → DB → Tests
   </div>
 </section>
@@ -584,13 +578,13 @@ public class SubmissionService {
 
 <!-- ═══ SLIDE 20: FIVE PRINCIPLES ═══ -->
 <section data-background-gradient="linear-gradient(135deg,#0f3460 0%,#1a1a2e 100%)">
-  <h2>5 Principles to Repeat</h2>
-  <div style="font-size:.8em;margin-top:.8em;">
-    <div class="rule-box">1. <span class="accent">"Don't code what you haven't reasoned about."</span></div>
-    <div class="rule-box">2. <span class="accent">"Validate input early, fail clearly, never silently."</span></div>
-    <div class="rule-box">3. <span class="accent">"Controller is thin. Service owns logic. Repository only fetches."</span></div>
-    <div class="rule-box">4. <span class="accent">"Collections are chosen by behavior, not convenience."</span></div>
-    <div class="rule-box">5. <span class="accent">"Bad schema = bad code. Model data first."</span></div>
+  <h2>5 Principles</h2>
+  <div style="font-size:.78em;margin-top:.6em;">
+    <div class="rule-box" style="padding:.5em .8em;">1. <span class="accent">"Don't code what you haven't reasoned about."</span></div>
+    <div class="rule-box" style="padding:.5em .8em;">2. <span class="accent">"Validate input early, fail clearly, never silently."</span></div>
+    <div class="rule-box" style="padding:.5em .8em;">3. <span class="accent">"Controller is thin. Service owns logic. Repository only fetches."</span></div>
+    <div class="rule-box" style="padding:.5em .8em;">4. <span class="accent">"Collections are chosen by behavior, not convenience."</span></div>
+    <div class="rule-box" style="padding:.5em .8em;">5. <span class="accent">"Bad schema = bad code. Model data first."</span></div>
   </div>
 </section>
 
@@ -606,6 +600,19 @@ public class SubmissionService {
   <p style="font-size:.7em;color:#95a5a6;">
     📋 <a href="index.html" style="color:#3498db;">Full Lecture Notes →</a>&nbsp;&nbsp;
     🔗 <a href="https://hackathon-java-python.vercel.app/java.html" style="color:#3498db;">Problem Bank →</a>
+  </p>
+</section>
+
+<!-- ═══ SLIDE 22: SEE YOU TOMORROW ═══ -->
+<section data-background="#0a0a0a">
+  <h2 style="font-size:1.3em;">See You Tomorrow Morning ☀️</h2>
+  <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExcDZ3dGNvaTZidHdtZ3R6aXIzN2FyNzVuY2x3NzByMGp6NnJ3ZXl2ZyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/l0ErFafpPDHSLMHUc/giphy.gif"
+       alt="Coffee gif"
+       style="width:220px;border-radius:16px;margin:.6em auto;display:block;border:3px solid #f39c12;" />
+  <p style="font-size:.85em;color:#bdc3c7;margin:.5em 0 .2em;">Come with your designs ready.</p>
+  <p style="font-size:.85em;color:#bdc3c7;margin:0;">We build tomorrow. ☕</p>
+  <p style="font-size:.6em;color:#555;margin-top:1em;">
+    — Aditya Dua · Sr. Manager, Field Services · GitHub India
   </p>
 </section>
 
