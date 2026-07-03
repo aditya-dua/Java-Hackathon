@@ -681,13 +681,11 @@ public class SubmissionService {
 
   var curtainTimer = null;
   Reveal.on('slidechanged', function(e) {
-    // clear any pending curtain from previous slide
     if (curtainTimer) { clearTimeout(curtainTimer); curtainTimer = null; }
     document.body.classList.remove('curtains-close');
-    // fire curtain only on the very last slide
-    var totalSlides = Reveal.getTotalSlides();
-    var indices     = Reveal.getIndices();
-    if (indices.h === totalSlides - 1) {
+    // last slide: no next horizontal slide exists
+    var isLast = !Reveal.hasNextSlide();
+    if (isLast) {
       curtainTimer = setTimeout(function() {
         document.body.classList.add('curtains-close');
       }, 5000);
