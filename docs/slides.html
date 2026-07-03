@@ -620,7 +620,7 @@ public class SubmissionService {
 </section>
 
 <!-- ═══ SLIDE 22: SEE YOU TOMORROW ═══ -->
-<section data-background="#0a0a0a">
+<section data-background="#0a0a0a" data-state="final-slide">
   <div style="font-size:3em;margin-bottom:.3em;">☕</div>
   <h2 style="font-size:1.1em;color:#f39c12;margin-bottom:.6em;">See You Tomorrow Morning</h2>
   <p style="font-size:.95em;color:#ecf0f1;font-style:italic;line-height:1.7;margin:.4em 0;">
@@ -680,16 +680,14 @@ public class SubmissionService {
   }
 
   var curtainTimer = null;
-  Reveal.on('slidechanged', function(e) {
+  Reveal.on('final-slide', function() {
+    curtainTimer = setTimeout(function() {
+      document.body.classList.add('curtains-close');
+    }, 5000);
+  });
+  Reveal.on('slidechanged', function() {
     if (curtainTimer) { clearTimeout(curtainTimer); curtainTimer = null; }
     document.body.classList.remove('curtains-close');
-    // last slide: no next horizontal slide exists
-    var isLast = !Reveal.hasNextSlide();
-    if (isLast) {
-      curtainTimer = setTimeout(function() {
-        document.body.classList.add('curtains-close');
-      }, 5000);
-    }
   });
 </script>
 </body>
