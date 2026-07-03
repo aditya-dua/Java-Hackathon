@@ -605,15 +605,49 @@ public class SubmissionService {
 
 <!-- ═══ SLIDE 22: SEE YOU TOMORROW ═══ -->
 <section data-background="#0a0a0a">
-  <h2 style="font-size:1.3em;">See You Tomorrow Morning ☀️</h2>
-  <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExcDZ3dGNvaTZidHdtZ3R6aXIzN2FyNzVuY2x3NzByMGp6NnJ3ZXl2ZyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/l0ErFafpPDHSLMHUc/giphy.gif"
-       alt="Coffee gif"
-       style="width:220px;border-radius:16px;margin:.6em auto;display:block;border:3px solid #f39c12;" />
-  <p style="font-size:.85em;color:#bdc3c7;margin:.5em 0 .2em;">Come with your designs ready.</p>
-  <p style="font-size:.85em;color:#bdc3c7;margin:0;">We build tomorrow. ☕</p>
-  <p style="font-size:.6em;color:#555;margin-top:1em;">
+  <div style="font-size:3em;margin-bottom:.3em;">☕</div>
+  <h2 style="font-size:1.1em;color:#f39c12;margin-bottom:.6em;">See You Tomorrow Morning</h2>
+  <p style="font-size:.95em;color:#ecf0f1;font-style:italic;line-height:1.7;margin:.4em 0;">
+    "AI can write the code.<br/>
+    But it can't do the thinking for you."
+  </p>
+  <p style="font-size:.8em;color:#bdc3c7;line-height:1.6;margin:.6em 0;">
+    Come with your problem framed.<br/>
+    Come with your design done.<br/>
+    Come with your test cases written.
+  </p>
+  <hr style="border-color:#f39c12;width:25%;margin:.8em auto;" />
+  <p style="font-size:.65em;color:#555;margin:0;">
     — Aditya Dua · Sr. Manager, Field Services · GitHub India
   </p>
+  <!-- CSS curtain close animation -->
+  <style>
+    .curtain-left, .curtain-right {
+      position:fixed; top:0; width:0; height:100%;
+      background:#0a0a0a; z-index:9999;
+      transition: width 1.8s cubic-bezier(.77,0,.18,1);
+    }
+    .curtain-left  { left:0; }
+    .curtain-right { right:0; }
+    .curtains-close .curtain-left,
+    .curtains-close .curtain-right { width:51%; }
+  </style>
+  <div class="curtain-left"  id="cl"></div>
+  <div class="curtain-right" id="cr"></div>
+  <script>
+    Reveal.on('slidechanged', function(e) {
+      var total = Reveal.getTotalSlides();
+      var idx   = Reveal.getIndices();
+      // trigger on last slide (h = total-1 in flat mode)
+      if (e.currentSlide === e.currentSlide.closest('.slides').lastElementChild) {
+        setTimeout(function(){
+          document.body.classList.add('curtains-close');
+        }, 1800);
+      } else {
+        document.body.classList.remove('curtains-close');
+      }
+    });
+  </script>
 </section>
 
 </div>
