@@ -1,3 +1,8 @@
+---
+layout: default
+title: Hackathon Prep Bootcamp — Facilitator Lecture Notes
+---
+
 # Hackathon Prep Bootcamp — Facilitator Lecture Notes
 
 > **Format:** 3-hour pre-implementation teaching session  
