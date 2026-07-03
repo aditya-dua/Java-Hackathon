@@ -68,7 +68,7 @@
 <!-- ═══ SLIDE 2: WHAT THIS SESSION IS ═══ -->
 <section>
   <h2>What This Session Is</h2>
-  <div class="two-col" style="margin-top:1em;">
+  <div class="two-col" style="margin-top:.8em;">
     <div>
       <p class="green">✔ You will learn</p>
       <div class="rule-box">Problem framing skills</div>
@@ -84,6 +84,9 @@
       <div class="rule-box" style="border-color:#e74c3c;">Finishing implementation today</div>
     </div>
   </div>
+  <p style="font-size:.8em;font-style:italic;color:#f39c12;margin-top:.8em;border-top:1px solid #2c3e50;padding-top:.6em;">
+    "AI can write the code. But it can't do the thinking for you."
+  </p>
 </section>
 
 <!-- ═══ SLIDE 3: MANTRA ═══ -->
@@ -608,24 +611,23 @@ public class SubmissionService {
   <div style="font-size:3em;margin-bottom:.3em;">☕</div>
   <h2 style="font-size:1.1em;color:#f39c12;margin-bottom:.6em;">See You Tomorrow Morning</h2>
   <p style="font-size:.95em;color:#ecf0f1;font-style:italic;line-height:1.7;margin:.4em 0;">
-    "AI can write the code.<br/>
-    But it can't do the thinking for you."
+    "The best engineers don't just write code —<br/>
+    they make the machine think what they thought."
   </p>
-  <p style="font-size:.8em;color:#bdc3c7;line-height:1.6;margin:.6em 0;">
-    Come with your problem framed.<br/>
-    Come with your design done.<br/>
-    Come with your test cases written.
+  <p style="font-size:.78em;color:#bdc3c7;line-height:1.8;margin:.6em 0;">
+    Tonight: think deeply.<br/>
+    Tomorrow: build fast.<br/>
+    Always: ship something real.
   </p>
   <hr style="border-color:#f39c12;width:25%;margin:.8em auto;" />
   <p style="font-size:.65em;color:#555;margin:0;">
     — Aditya Dua · Sr. Manager, Field Services · GitHub India
   </p>
-  <!-- CSS curtain close animation -->
   <style>
     .curtain-left, .curtain-right {
       position:fixed; top:0; width:0; height:100%;
       background:#0a0a0a; z-index:9999;
-      transition: width 1.8s cubic-bezier(.77,0,.18,1);
+      transition: width 2s cubic-bezier(.77,0,.18,1);
     }
     .curtain-left  { left:0; }
     .curtain-right { right:0; }
@@ -636,13 +638,10 @@ public class SubmissionService {
   <div class="curtain-right" id="cr"></div>
   <script>
     Reveal.on('slidechanged', function(e) {
-      var total = Reveal.getTotalSlides();
-      var idx   = Reveal.getIndices();
-      // trigger on last slide (h = total-1 in flat mode)
       if (e.currentSlide === e.currentSlide.closest('.slides').lastElementChild) {
         setTimeout(function(){
           document.body.classList.add('curtains-close');
-        }, 1800);
+        }, 5000);
       } else {
         document.body.classList.remove('curtains-close');
       }
