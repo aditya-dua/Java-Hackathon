@@ -679,16 +679,21 @@ public class SubmissionService {
     if (el) el.style.display = 'block';
   }
 
+  // Curtain: poll every 300ms — when final slide has class 'present', start 5s timer
   var curtainTimer = null;
-  document.addEventListener('final-slide', function() {
-    curtainTimer = setTimeout(function() {
-      document.body.classList.add('curtains-close');
-    }, 5000);
-  });
-  Reveal.on('slidechanged', function() {
-    if (curtainTimer) { clearTimeout(curtainTimer); curtainTimer = null; }
-    document.body.classList.remove('curtains-close');
-  });
+  setInterval(function() {
+    var finalSlide = document.querySelector('section[data-state="final-slide"]');
+    if (finalSlide && finalSlide.classList.contains('present')) {
+      if (!curtainTimer && !document.body.classList.contains('curtains-close')) {
+        curtainTimer = setTimeout(function() {
+          document.body.classList.add('curtains-close');
+        }, 5000);
+      }
+    } else {
+      if (curtainTimer) { clearTimeout(curtainTimer); curtainTimer = null; }
+      document.body.classList.remove('curtains-close');
+    }
+  }, 300);
 </script>
 </body>
 </html>
