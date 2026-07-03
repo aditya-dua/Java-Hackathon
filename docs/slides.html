@@ -9,98 +9,63 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/theme/night.css" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/plugin/highlight/monokai.css" />
   <style>
-    :root {
-      --accent: #f39c12;
-      --green:  #2ecc71;
-      --red:    #e74c3c;
-      --blue:   #3498db;
-    }
-    .reveal h1, .reveal h2 { color: var(--accent); }
-    .reveal h3 { color: #ecf0f1; }
-    .accent  { color: var(--accent); font-weight: bold; }
-    .green   { color: var(--green);  font-weight: bold; }
-    .red     { color: var(--red);    font-weight: bold; }
-    .blue    { color: var(--blue);   font-weight: bold; }
-
-    .reveal table { font-size: 0.8em; margin: 0 auto; }
-    .reveal table th { background: #2c3e50; color: var(--accent); }
-    .reveal table td { border-color: #444; }
-
-    .pill {
-      display: inline-block;
-      padding: 4px 14px;
-      border-radius: 20px;
-      font-size: 0.75em;
-      font-weight: bold;
-      margin: 4px;
-    }
-    .pill-orange { background: #e67e22; color: #fff; }
-    .pill-green  { background: #27ae60; color: #fff; }
-    .pill-blue   { background: #2980b9; color: #fff; }
-    .pill-red    { background: #c0392b; color: #fff; }
-
-    .two-col { display: flex; gap: 2em; align-items: flex-start; }
-    .two-col > * { flex: 1; }
-
-    .big-number {
-      font-size: 3em;
-      font-weight: 800;
-      color: var(--accent);
-      line-height: 1;
-    }
-    .rule-box {
-      border: 2px solid var(--accent);
-      border-radius: 8px;
-      padding: 0.6em 1em;
-      margin: 0.4em 0;
-      font-size: 0.85em;
-      text-align: left;
-    }
-    .timeline {
-      display: flex;
-      flex-direction: column;
-      gap: 0.3em;
-      font-size: 0.75em;
-      text-align: left;
-    }
-    .timeline-item {
-      display: flex;
-      align-items: center;
-      gap: 1em;
-      padding: 0.4em 0.8em;
-      border-radius: 6px;
-      background: #1a2533;
-    }
-    .timeline-time {
-      color: var(--accent);
-      font-weight: bold;
-      min-width: 80px;
-    }
-    .reveal pre { font-size: 0.55em; }
-    .reveal .slides section { padding: 20px 40px; }
-    footer-note { font-size: 0.5em; color: #888; }
+    :root { --accent:#f39c12; --green:#2ecc71; --red:#e74c3c; --blue:#3498db; }
+    .reveal h1,.reveal h2 { color:var(--accent); }
+    .reveal h3 { color:#ecf0f1; }
+    .accent { color:var(--accent); font-weight:bold; }
+    .green  { color:var(--green);  font-weight:bold; }
+    .red    { color:var(--red);    font-weight:bold; }
+    .blue   { color:var(--blue);   font-weight:bold; }
+    .reveal table { font-size:.8em; margin:0 auto; }
+    .reveal table th { background:#2c3e50; color:var(--accent); }
+    .reveal table td { border-color:#444; }
+    .pill { display:inline-block; padding:4px 14px; border-radius:20px; font-size:.75em; font-weight:bold; margin:4px; }
+    .pill-orange { background:#e67e22; color:#fff; }
+    .pill-green  { background:#27ae60; color:#fff; }
+    .pill-blue   { background:#2980b9; color:#fff; }
+    .two-col { display:flex; gap:2em; align-items:flex-start; }
+    .two-col > * { flex:1; }
+    .rule-box { border:2px solid var(--accent); border-radius:8px; padding:.6em 1em; margin:.4em 0; font-size:.85em; text-align:left; }
+    .timeline { display:flex; flex-direction:column; gap:.3em; font-size:.75em; text-align:left; }
+    .timeline-item { display:flex; align-items:center; gap:1em; padding:.4em .8em; border-radius:6px; background:#1a2533; }
+    .timeline-time { color:var(--accent); font-weight:bold; min-width:80px; }
+    .reveal pre { font-size:.55em; }
+    .reveal .slides section { padding:20px 40px; }
+    /* Quiz styles */
+    .quiz-q { font-size:1em; color:#ecf0f1; margin-bottom:.8em; line-height:1.5; }
+    .quiz-options { list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:.5em; }
+    .quiz-options li { background:#1a2533; border:2px solid #2c3e50; border-radius:8px; padding:.5em 1em; font-size:.85em; cursor:pointer; transition:all .2s; }
+    .quiz-options li:hover { border-color:var(--accent); background:#0f3460; }
+    .quiz-options li.correct { border-color:var(--green); background:#145a32; color:#fff; }
+    .quiz-options li.wrong   { border-color:var(--red);   background:#641414; color:#fff; }
+    .quiz-options li.reveal-correct { border-color:var(--green); background:#145a32; color:#fff; }
+    .quiz-badge { display:inline-block; padding:3px 10px; border-radius:12px; font-size:.7em; font-weight:bold; margin-left:.5em; }
+    .badge-fun { background:#8e44ad; color:#fff; }
+    .badge-quiz { background:#e67e22; color:#fff; }
   </style>
 </head>
 <body>
 <div class="reveal">
 <div class="slides">
 
-<!-- ═══════════════════════════════════════════════
-     SLIDE 1 — TITLE
-═══════════════════════════════════════════════ -->
+<!-- ═══ SLIDE 1: TITLE ═══ -->
 <section data-background-gradient="linear-gradient(135deg,#1a1a2e 0%,#16213e 60%,#0f3460 100%)">
   <h1 style="font-size:1.8em;">Hackathon Prep<br><span style="color:#f39c12;">Bootcamp</span></h1>
-  <p style="font-size:0.9em; color:#bdc3c7;">Core Java · Collections · Spring Boot · MySQL</p>
-  <hr style="border-color:#f39c12; width:40%; margin: 1em auto;" />
-  <p style="font-size:0.7em; color:#95a5a6;">
-    KL University — Skill Development Division<br/>
-    <a href="https://hackathon-java-python.vercel.app/java.html" style="color:#3498db;">110 Industry Problem Statements →</a>
+  <p style="font-size:.85em; color:#bdc3c7; margin-bottom:.3em;">Core Java · Collections · Spring Boot · MySQL</p>
+  <hr style="border-color:#f39c12;width:40%;margin:1em auto;" />
+  <p style="font-size:.75em; color:#ecf0f1; margin-bottom:.2em;">
+    Delivered by <strong style="color:#f39c12;">Aditya Dua</strong>
+  </p>
+  <p style="font-size:.65em; color:#95a5a6; margin-top:0;">
+    Sr. Manager, Field Services — GitHub India
+  </p>
+  <p style="font-size:.6em; color:#7f8c8d; margin-top:.8em;">
+    KL University · Skill Development Division &nbsp;|&nbsp;
+    <a href="https://hackathon-java-python.vercel.app/java.html" style="color:#3498db;">110 Industry Problems →</a>
   </p>
 </section>
 
-<!-- ═══════════════════════════════════════════════
-     SLIDE 2 — WHAT THIS SESSION IS
-═══════════════════════════════════════════════ -->
+<!-- ═══ SLIDE 2: WHAT THIS SESSION IS ═══ -->
 <section>
   <h2>What This Session Is</h2>
   <div class="two-col" style="margin-top:1em;">
@@ -121,24 +86,20 @@
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════════════
-     SLIDE 3 — MANTRA
-═══════════════════════════════════════════════ -->
+<!-- ═══ SLIDE 3: MANTRA ═══ -->
 <section data-background="#0f3460">
-  <h2 style="font-size:1.2em; color:#95a5a6;">The session mantra</h2>
-  <p style="font-size:1.6em; font-weight:800; line-height:1.6; margin-top:0.8em;">
+  <h2 style="font-size:1.2em;color:#95a5a6;">The session mantra</h2>
+  <p style="font-size:1.6em;font-weight:800;line-height:1.8;margin-top:.8em;">
     <span style="color:#e74c3c;">Make it clear</span><br/>
     <span style="color:#f39c12;">→ Make it correct</span><br/>
     <span style="color:#2ecc71;">→ Make it clean</span>
   </p>
 </section>
 
-<!-- ═══════════════════════════════════════════════
-     SLIDE 4 — 3-HOUR AGENDA
-═══════════════════════════════════════════════ -->
+<!-- ═══ SLIDE 4: AGENDA ═══ -->
 <section>
   <h2>3-Hour Agenda</h2>
-  <div class="timeline" style="margin-top:0.8em;">
+  <div class="timeline" style="margin-top:.8em;">
     <div class="timeline-item"><span class="timeline-time">0:00–0:10</span><span>Opening &amp; Context</span></div>
     <div class="timeline-item"><span class="timeline-time">0:10–0:25</span><span>Problem Framing Workshop</span></div>
     <div class="timeline-item"><span class="timeline-time">0:25–0:55</span><span>Core Java Essentials</span></div>
@@ -152,40 +113,39 @@
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════════════
-     SLIDE 5 — TWO TRACKS
-═══════════════════════════════════════════════ -->
+<!-- ═══ SLIDE 5: TWO TRACKS ═══ -->
 <section>
-  <h2>Two Delivery Tracks</h2>
-  <div class="two-col" style="margin-top:1em;">
-    <div style="border:2px solid #2ecc71; border-radius:10px; padding:1em;">
-      <p class="green" style="font-size:1.1em;">🟢 Foundation Track</p>
-      <p style="font-size:0.75em; color:#bdc3c7;">Beginners · Module A/B problems</p>
-      <hr style="border-color:#2ecc71;"/>
-      <p>✔ Core Java</p>
-      <p>✔ Collections</p>
-      <p style="color:#888;">✗ Spring Boot</p>
-      <p style="color:#888;">✗ MySQL</p>
+  <h2>Pick Your Track</h2>
+  <p style="font-size:.8em;color:#bdc3c7;margin-bottom:1em;">Choose based on your comfort level — both tracks lead to a valid submission</p>
+  <div class="two-col">
+    <div style="border:2px solid #f39c12;border-radius:14px;padding:1.2em;background:#1a1a0f;">
+      <p style="font-size:1.4em;margin:0 0 .3em;">☕</p>
+      <p style="font-size:1.1em;font-weight:bold;color:#f39c12;margin:.2em 0;">Java Track</p>
+      <p style="font-size:.7em;color:#bdc3c7;margin:.2em 0 .8em;">Build a solid, well-tested core Java solution</p>
+      <div class="rule-box" style="font-size:.75em;">✔ Core Java logic</div>
+      <div class="rule-box" style="font-size:.75em;">✔ Collections</div>
+      <div class="rule-box" style="font-size:.75em;">✔ OOP &amp; Exception handling</div>
+      <div class="rule-box" style="font-size:.75em;">✔ Console I/O</div>
+      <p style="font-size:.65em;color:#f39c12;margin-top:.8em;">Module A / B problems</p>
     </div>
-    <div style="border:2px solid #3498db; border-radius:10px; padding:1em;">
-      <p class="blue" style="font-size:1.1em;">🔵 Full-Stack Track</p>
-      <p style="font-size:0.75em; color:#bdc3c7;">Stronger students · Module C+ problems</p>
-      <hr style="border-color:#3498db;"/>
-      <p>✔ Core Java</p>
-      <p>✔ Collections</p>
-      <p>✔ Spring Boot</p>
-      <p>✔ MySQL</p>
+    <div style="border:2px solid #3498db;border-radius:14px;padding:1.2em;background:#0f1a2e;">
+      <p style="font-size:1.4em;margin:0 0 .3em;">🚀</p>
+      <p style="font-size:1.1em;font-weight:bold;color:#3498db;margin:.2em 0;">Full-Stack Track</p>
+      <p style="font-size:.7em;color:#bdc3c7;margin:.2em 0 .8em;">Build a REST API backed by a real database</p>
+      <div class="rule-box" style="font-size:.75em;border-color:#3498db;">✔ Everything in Java Track</div>
+      <div class="rule-box" style="font-size:.75em;border-color:#3498db;">✔ Spring Boot REST API</div>
+      <div class="rule-box" style="font-size:.75em;border-color:#3498db;">✔ MySQL schema + JPA</div>
+      <div class="rule-box" style="font-size:.75em;border-color:#3498db;">✔ Layered architecture</div>
+      <p style="font-size:.65em;color:#3498db;margin-top:.8em;">Module C+ problems</p>
     </div>
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════════════
-     SLIDE 6 — PROBLEM FRAMING
-═══════════════════════════════════════════════ -->
+<!-- ═══ SLIDE 6: PROBLEM FRAMING ═══ -->
 <section>
   <h2>Problem Framing</h2>
-  <p style="font-size:0.8em; color:#bdc3c7;">Convert any statement into an engineering contract</p>
-  <table style="margin-top:0.8em; width:100%;">
+  <p style="font-size:.8em;color:#bdc3c7;">Convert any statement into an engineering contract</p>
+  <table style="margin-top:.8em;width:100%;">
     <tr><th>Point</th><th>Question</th></tr>
     <tr><td><span class="accent">Inputs</span></td><td>What data comes in?</td></tr>
     <tr><td><span class="accent">Outputs</span></td><td>What must be produced?</td></tr>
@@ -194,25 +154,23 @@
     <tr><td><span class="accent">Constraints</span></td><td>Any limits on values or formats?</td></tr>
     <tr><td><span class="accent">Assumptions</span></td><td>What are you assuming when unstated?</td></tr>
   </table>
-  <p style="font-size:0.7em; color:#f39c12; margin-top:0.8em;">⚡ Rule: If a team can't state inputs/outputs in 2 minutes — they are NOT ready to code</p>
+  <p style="font-size:.7em;color:#f39c12;margin-top:.8em;">⚡ Rule: If a team can't state inputs/outputs in 2 minutes — they are NOT ready to code</p>
 </section>
 
-<!-- ═══════════════════════════════════════════════
-     SLIDE 7 — CORE JAVA: DATA TYPES
-═══════════════════════════════════════════════ -->
+<!-- ═══ SLIDE 7: DATA TYPES ═══ -->
 <section>
   <h2>Core Java — Data Types &amp; Precision</h2>
-  <p class="red" style="font-size:0.8em;">⚠ Most common silent bug in hackathons</p>
-  <div class="two-col" style="margin-top:0.6em;">
+  <p class="red" style="font-size:.8em;">⚠ Most common silent bug in hackathons</p>
+  <div class="two-col" style="margin-top:.6em;">
     <div>
-      <p class="red" style="font-size:0.8em;">❌ Wrong</p>
+      <p class="red" style="font-size:.8em;">❌ Wrong</p>
       <pre><code class="java">int income = 50000;
 int emi = 22000;
 // gives 0, not 0.44!
 System.out.println(emi / income);</code></pre>
     </div>
     <div>
-      <p class="green" style="font-size:0.8em;">✅ Correct</p>
+      <p class="green" style="font-size:.8em;">✅ Correct</p>
       <pre><code class="java">int income = 50000;
 int emi = 22000;
 // gives 0.44
@@ -220,73 +178,65 @@ System.out.println(
   (double) emi / income);</code></pre>
     </div>
   </div>
-  <div class="rule-box" style="margin-top:0.6em; font-size:0.75em;">
+  <div class="rule-box" style="margin-top:.6em;font-size:.75em;">
     💡 Use <code>double</code> for money &amp; ratios. Round only the <strong>final</strong> output.
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════════════
-     SLIDE 8 — CORE JAVA: CONTROL FLOW
-═══════════════════════════════════════════════ -->
+<!-- ═══ SLIDE 8: CONTROL FLOW ═══ -->
 <section>
   <h2>Core Java — Control Flow</h2>
   <div class="two-col">
     <div>
-      <p class="accent" style="font-size:0.85em;">Guard clauses — fail early</p>
-      <pre><code class="java">if (income &lt;= 0) {
+      <p class="accent" style="font-size:.85em;">Guard clauses — fail early</p>
+      <pre><code class="java">if (income <= 0) {
   System.out.println(
-    "Invalid: income must be positive");
+    "Invalid: must be positive");
   return;
 }
 // safe to proceed</code></pre>
     </div>
     <div>
-      <p class="accent" style="font-size:0.85em;">Slab order matters</p>
+      <p class="accent" style="font-size:.85em;">Slab order matters</p>
       <pre><code class="java">// CORRECT — high first
-if (income &gt;= 1000000)      { ... }
-else if (income &gt;= 500000)  { ... }
-else if (income &gt;= 250000)  { ... }
+if (income >= 1000000)     { ... }
+else if (income >= 500000) { ... }
+else if (income >= 250000) { ... }
 // WRONG — low first catches all</code></pre>
     </div>
   </div>
-  <p style="font-size:0.7em; color:#bdc3c7; margin-top:0.6em;">
-    Applies to: tax slabs · tariff billing · toll fares · reward tiers
-  </p>
+  <p style="font-size:.7em;color:#bdc3c7;margin-top:.6em;">Applies to: tax slabs · tariff billing · toll fares · reward tiers</p>
 </section>
 
-<!-- ═══════════════════════════════════════════════
-     SLIDE 9 — CORE JAVA: LOOPS
-═══════════════════════════════════════════════ -->
+<!-- ═══ SLIDE 9: LOOPS ═══ -->
 <section>
   <h2>Core Java — Loops &amp; Accumulator</h2>
   <pre><code class="java">// One pass: min, max, average together
 double total = 0;
 double min = prices[0], max = prices[0];
 
-for (int i = 0; i &lt; prices.length; i++) {
+for (int i = 0; i < prices.length; i++) {
     total += prices[i];
-    if (prices[i] &lt; min) min = prices[i];
-    if (prices[i] &gt; max) max = prices[i];
+    if (prices[i] < min) min = prices[i];
+    if (prices[i] > max) max = prices[i];
 }
 double avg = total / prices.length;</code></pre>
-  <div class="rule-box" style="font-size:0.75em; margin-top:0.6em;">
+  <div class="rule-box" style="font-size:.75em;margin-top:.6em;">
     💡 One clean pass &gt; multiple loops. Watch off-by-one at slab boundaries.
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════════════
-     SLIDE 10 — CORE JAVA: METHOD DECOMPOSITION
-═══════════════════════════════════════════════ -->
+<!-- ═══ SLIDE 10: METHOD DECOMPOSITION ═══ -->
 <section>
   <h2>Method Decomposition</h2>
-  <p style="font-size:0.8em; color:#bdc3c7;">One method = one responsibility</p>
+  <p style="font-size:.8em;color:#bdc3c7;">One method = one responsibility</p>
   <pre><code class="java">public static void main(String[] args) {
     String input  = readInput();
     if (!validateInput(input)) return;
     double result = computeResult(input);
     printOutput(result);
 }</code></pre>
-  <div style="display:flex; gap:1em; margin-top:0.8em; font-size:0.75em;">
+  <div style="display:flex;gap:1em;margin-top:.8em;font-size:.75em;">
     <div class="rule-box" style="flex:1;">📥 <strong>readInput()</strong><br/>Collect raw data</div>
     <div class="rule-box" style="flex:1;">🛡 <strong>validateInput()</strong><br/>Guard clauses</div>
     <div class="rule-box" style="flex:1;">⚙️ <strong>computeResult()</strong><br/>Business logic</div>
@@ -294,123 +244,197 @@ double avg = total / prices.length;</code></pre>
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════════════
-     SLIDE 11 — OOP
-═══════════════════════════════════════════════ -->
-<section>
-  <h2>OOP — When to Use Classes</h2>
-  <div class="two-col">
-    <div>
-      <p class="red" style="font-size:0.8em;">❌ Parallel arrays — de-sync nightmare</p>
-      <pre><code class="java">String[] names    = {"Alice","Bob"};
-double[] salaries = {50000, 60000};
-// One update forgets the other!</code></pre>
-    </div>
-    <div>
-      <p class="green" style="font-size:0.8em;">✅ Encapsulated object</p>
-      <pre><code class="java">class Employee {
-  private String name;
-  private double basicSalary;
-
-  public double computeNetPay() {
-    double hra = basicSalary * 0.4;
-    double pf  = basicSalary * 0.12;
-    return basicSalary + hra - pf;
-  }
-}</code></pre>
-    </div>
-  </div>
-  <p style="font-size:0.75em; color:#f39c12; margin-top:0.6em;">
-    Use OOP when behavior differs by type or multiple fields travel together.
+<!-- ═══ SLIDE 10b: SPOT THE BUG QUIZ ═══ -->
+<section data-background="#1a0a00">
+  <h2>🐛 Quiz — Spot the Bug <span class="badge-fun badge-quiz">Interactive</span></h2>
+  <p class="quiz-q">What does this print?</p>
+  <pre><code class="java">int marks = 450;
+int total = 500;
+System.out.println("Percentage: " + marks/total * 100);</code></pre>
+  <ul class="quiz-options" id="q-bug" style="margin-top:.8em;">
+    <li onclick="answer(this,'wrong')">A) 90</li>
+    <li onclick="answer(this,'wrong')">B) 90.0</li>
+    <li onclick="answer(this,'correct')">C) 0</li>
+    <li onclick="answer(this,'wrong')">D) Compilation Error</li>
+  </ul>
+  <p id="q-bug-exp" style="display:none;font-size:.7em;color:#f39c12;margin-top:.6em;">
+    💥 Integer division! <code>450/500 = 0</code>, then <code>0 * 100 = 0</code>.<br/>
+    Fix: <code>(double) marks / total * 100</code>
   </p>
 </section>
 
-<!-- ═══════════════════════════════════════════════
-     SLIDE 12 — COLLECTIONS
-═══════════════════════════════════════════════ -->
+<!-- ═══ SLIDE 11: OOP ═══ -->
+<section>
+  <h2>OOP — Class, Inheritance &amp; Subclass</h2>
+  <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:.7em;margin-top:.6em;font-size:.78em;">
+    <div class="rule-box" style="border-color:#2ecc71;">
+      <p style="color:#2ecc71;font-weight:bold;margin:0 0 .3em;">🏗 Use a Class when</p>
+      <p style="margin:0;">Multiple fields + behavior belong together<br/><br/>
+      <code style="font-size:.85em;">Employee</code> has name, salary, computePay()</p>
+    </div>
+    <div class="rule-box" style="border-color:#3498db;">
+      <p style="color:#3498db;font-weight:bold;margin:0 0 .3em;">🧬 Use Inheritance when</p>
+      <p style="margin:0;"><strong>"IS-A"</strong> relationship exists<br/><br/>
+      <code style="font-size:.85em;">SavingsAccount</code> IS-A <code>Account</code></p>
+    </div>
+    <div class="rule-box" style="border-color:#f39c12;">
+      <p style="color:#f39c12;font-weight:bold;margin:0 0 .3em;">🔧 Use Subclass when</p>
+      <p style="margin:0;">Behavior <em>differs</em> by type<br/><br/>
+      <code style="font-size:.85em;">FDAccount</code> has lock-in; <code>CurrentAccount</code> has overdraft</p>
+    </div>
+  </div>
+  <div style="display:flex;gap:.7em;margin-top:.6em;font-size:.75em;">
+    <div class="rule-box" style="flex:1;border-color:#9b59b6;">
+      <strong style="color:#9b59b6;">IS-A</strong> → Inheritance<br/>
+      <code>Dog IS-A Animal</code><br/>
+      <code>SavingsAccount IS-A Account</code>
+    </div>
+    <div class="rule-box" style="flex:1;border-color:#e67e22;">
+      <strong style="color:#e67e22;">HAS-A</strong> → Composition<br/>
+      <code>Car HAS-A Engine</code><br/>
+      <code>Employee HAS-A Address</code>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ SLIDE 12: COLLECTIONS TABLE ═══ -->
 <section>
   <h2>Collections — The Hidden MVP</h2>
-  <table style="margin-top:0.6em; width:100%; font-size:0.78em;">
+  <table style="margin-top:.6em;width:100%;font-size:.78em;">
     <tr><th>Need</th><th>Use</th><th>Example</th></tr>
     <tr><td>Ordered items</td><td><code>List&lt;T&gt;</code></td><td>Cart, price ticks, log lines</td></tr>
     <tr><td>No duplicates</td><td><code>Set&lt;T&gt;</code></td><td>Unique customers, keywords</td></tr>
     <tr><td>Key→Value lookup</td><td><code>Map&lt;K,V&gt;</code></td><td>Word counts, category rates</td></tr>
     <tr><td>FIFO queue</td><td><code>Queue&lt;T&gt;</code></td><td>ATM queue, task scheduler</td></tr>
   </table>
-  <div class="rule-box" style="margin-top:0.8em; font-size:0.78em;">
-    💡 <strong>Choose by behavior, not by habit.</strong><br/>
-    Most hackathon problems need <code>Map&lt;String, Integer&gt;</code> for counting or lookup.
+  <div class="rule-box" style="margin-top:.8em;font-size:.78em;">
+    💡 <strong>Choose by behavior, not by habit.</strong>
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════════════
-     SLIDE 13 — COLLECTIONS: MAP EXAMPLE
-═══════════════════════════════════════════════ -->
+<!-- ═══ SLIDE 13: COLLECTIONS QUIZ (4 questions) ═══ -->
 <section>
-  <h2>Collections — Map in Action</h2>
-  <pre><code class="java">// Keyword frequency counter (Log Analyzer problem)
-Map&lt;String, Integer&gt; freq = new HashMap&lt;&gt;();
-String[] tokens = log.split("\\s+");
+  <section data-background="#001a0a">
+    <h2>🧩 Quiz — Pick the Right Collection <span class="badge-quiz badge-fun">4 Rounds</span></h2>
+    <p style="font-size:.8em;color:#bdc3c7;">Click an answer — can you go 4/4? 🎯</p>
+    <p class="quiz-q"><strong>Q1:</strong> You're storing which <em>state</em> belongs to which <em>country</em>. What do you use?</p>
+    <ul class="quiz-options" id="q1">
+      <li onclick="answer(this,'wrong')">A) List</li>
+      <li onclick="answer(this,'wrong')">B) Set</li>
+      <li onclick="answer(this,'correct')">C) Map&lt;String, String&gt;</li>
+      <li onclick="answer(this,'wrong')">D) Queue</li>
+    </ul>
+    <p id="q1-exp" style="display:none;font-size:.7em;color:#2ecc71;margin-top:.5em;">
+      ✅ <code>Map&lt;String, String&gt;</code> — state is the key, country is the value. Perfect key→value lookup!
+    </p>
+  </section>
 
-for (String token : tokens) {
-    freq.put(token, freq.getOrDefault(token, 0) + 1);
-}
+  <section data-background="#001a0a">
+    <h2>🧩 Quiz — Round 2</h2>
+    <p class="quiz-q"><strong>Q2:</strong> You want to track all unique students who visited the library today. What do you use?</p>
+    <ul class="quiz-options" id="q2">
+      <li onclick="answer(this,'wrong')">A) List — it keeps order!</li>
+      <li onclick="answer(this,'correct')">B) Set — no duplicates needed</li>
+      <li onclick="answer(this,'wrong')">C) Map — key-value pair</li>
+      <li onclick="answer(this,'wrong')">D) Array — simple and fast</li>
+    </ul>
+    <p id="q2-exp" style="display:none;font-size:.7em;color:#2ecc71;margin-top:.5em;">
+      ✅ <code>Set&lt;String&gt;</code> — automatically rejects duplicate entries. If a student swipes twice, counted once!
+    </p>
+  </section>
 
-// Print top keywords
-freq.entrySet().stream()
-    .sorted(Map.Entry.&lt;String,Integer&gt;comparingByValue().reversed())
-    .limit(5)
-    .forEach(e -&gt; System.out.println(e.getKey() + " : " + e.getValue()));</code></pre>
-  <p style="font-size:0.7em; color:#bdc3c7; margin-top:0.4em;">Applies to: PS-17 Log Keyword Counter · PS-10 Reward Points · PS-18 CRM Dedup</p>
+  <section data-background="#001a0a">
+    <h2>🧩 Quiz — Round 3</h2>
+    <p class="quiz-q"><strong>Q3:</strong> Students are standing in a canteen queue — first come, first served. What do you use? 🍱</p>
+    <ul class="quiz-options" id="q3">
+      <li onclick="answer(this,'wrong')">A) List — I use it for everything 😅</li>
+      <li onclick="answer(this,'wrong')">B) Set</li>
+      <li onclick="answer(this,'wrong')">C) Map</li>
+      <li onclick="answer(this,'correct')">D) Queue — FIFO!</li>
+    </ul>
+    <p id="q3-exp" style="display:none;font-size:.7em;color:#2ecc71;margin-top:.5em;">
+      ✅ <code>Queue&lt;String&gt;</code> — First In, First Out. Exactly how a canteen (should) work!
+    </p>
+  </section>
+
+  <section data-background="#001a0a">
+    <h2>🧩 Quiz — Round 4</h2>
+    <p class="quiz-q"><strong>Q4:</strong> You want to keep your Swiggy order history in the order you placed them. What do you use? 🍕</p>
+    <ul class="quiz-options" id="q4">
+      <li onclick="answer(this,'correct')">A) List — ordered &amp; allows duplicates</li>
+      <li onclick="answer(this,'wrong')">B) Set — unique orders only</li>
+      <li onclick="answer(this,'wrong')">C) Map — need a key for each order</li>
+      <li onclick="answer(this,'wrong')">D) Queue — I'll eat in order 😂</li>
+    </ul>
+    <p id="q4-exp" style="display:none;font-size:.7em;color:#2ecc71;margin-top:.5em;">
+      ✅ <code>List&lt;Order&gt;</code> — maintains insertion order, allows you to order biryani twice. No judgment!
+    </p>
+  </section>
 </section>
 
-<!-- ═══════════════════════════════════════════════
-     SLIDE 14 — SPRING BOOT ARCHITECTURE
-═══════════════════════════════════════════════ -->
+<!-- ═══ SLIDE 14: SPRING BOOT ARCHITECTURE ═══ -->
 <section>
-  <h2>Spring Boot — Layered Architecture</h2>
-  <div style="font-size:0.85em; margin-top:0.8em; line-height:2.2;">
-    <div style="background:#1a2533; border-radius:8px; padding:0.5em 1.5em; margin-bottom:0.3em;">
-      🌐 <strong>Client</strong> <span style="color:#888;">(Browser / Postman)</span>
-    </div>
-    <div style="text-align:center; color:#f39c12;">↓ HTTP Request</div>
-    <div style="background:#0f3460; border-radius:8px; padding:0.5em 1.5em; margin-bottom:0.3em; border:1px solid #3498db;">
-      🎯 <strong>Controller</strong> <span style="color:#3498db;">— thin, validates &amp; routes</span>
-    </div>
-    <div style="text-align:center; color:#f39c12;">↓</div>
-    <div style="background:#0f3460; border-radius:8px; padding:0.5em 1.5em; margin-bottom:0.3em; border:1px solid #f39c12;">
-      ⚙️ <strong>Service</strong> <span style="color:#f39c12;">— ALL business logic lives here</span>
-    </div>
-    <div style="text-align:center; color:#f39c12;">↓</div>
-    <div style="background:#0f3460; border-radius:8px; padding:0.5em 1.5em; border:1px solid #2ecc71;">
-      🗄 <strong>Repository</strong> <span style="color:#2ecc71;">— only fetches &amp; saves</span>
+  <h2>Spring Boot — Client-Server Architecture</h2>
+  <div style="margin-top:.5em;">
+    <!-- Architecture diagram using CSS boxes -->
+    <div style="display:flex;flex-direction:column;align-items:center;gap:0;font-size:.78em;">
+      <!-- Client -->
+      <div style="background:#1a3a5c;border:2px solid #3498db;border-radius:10px;padding:.5em 2em;width:60%;text-align:center;">
+        🌐 <strong style="color:#3498db;">Client</strong>
+        <span style="color:#888;font-size:.85em;"> — Browser / Mobile App / Postman</span>
+      </div>
+      <div style="color:#f39c12;font-size:1.2em;line-height:1;">↕ HTTP (JSON)</div>
+      <!-- Server box -->
+      <div style="border:2px dashed #f39c12;border-radius:12px;padding:.8em 1em;width:70%;background:#0a0a1a;">
+        <p style="color:#f39c12;font-size:.8em;font-weight:bold;margin:0 0 .5em;text-align:center;">☕ Spring Boot Server</p>
+        <div style="display:flex;flex-direction:column;gap:.3em;">
+          <div style="background:#0f3460;border:1px solid #3498db;border-radius:6px;padding:.4em .8em;">
+            🎯 <strong style="color:#3498db;">Controller</strong>
+            <span style="color:#888;font-size:.85em;"> — receives request, validates input, sends response</span>
+          </div>
+          <div style="text-align:center;color:#888;font-size:.9em;">↕ method call</div>
+          <div style="background:#0f3020;border:1px solid #f39c12;border-radius:6px;padding:.4em .8em;">
+            ⚙️ <strong style="color:#f39c12;">Service</strong>
+            <span style="color:#888;font-size:.85em;"> — ALL business logic &amp; rules live here</span>
+          </div>
+          <div style="text-align:center;color:#888;font-size:.9em;">↕ method call</div>
+          <div style="background:#0f2020;border:1px solid #2ecc71;border-radius:6px;padding:.4em .8em;">
+            🗄 <strong style="color:#2ecc71;">Repository</strong>
+            <span style="color:#888;font-size:.85em;"> — only fetches and saves data</span>
+          </div>
+        </div>
+      </div>
+      <div style="color:#f39c12;font-size:1.2em;line-height:1;">↕ SQL (JPA)</div>
+      <!-- DB -->
+      <div style="background:#1a0a3c;border:2px solid #9b59b6;border-radius:10px;padding:.5em 2em;width:60%;text-align:center;">
+        🐬 <strong style="color:#9b59b6;">MySQL Database</strong>
+        <span style="color:#888;font-size:.85em;"> — persists data</span>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════════════
-     SLIDE 15 — SPRING BOOT: CODE SKELETON
-═══════════════════════════════════════════════ -->
+<!-- ═══ SLIDE 14b: SPRING BOOT CODE SKELETON ═══ -->
 <section>
-  <h2>Spring Boot — Minimal Skeleton</h2>
-  <div class="two-col" style="font-size:0.9em;">
+  <h2>Spring Boot — Code Skeleton</h2>
+  <div class="two-col" style="font-size:.9em;">
     <div>
-      <p class="accent" style="font-size:0.8em;">Controller (thin)</p>
+      <p class="accent" style="font-size:.8em;">Controller (thin — no logic!)</p>
       <pre><code class="java">@RestController
 @RequestMapping("/api/submissions")
 public class SubmissionController {
   @Autowired SubmissionService svc;
 
   @PostMapping
-  public ResponseEntity&lt;?&gt; create(
+  public ResponseEntity<?> create(
       @RequestBody Submission s) {
     return ResponseEntity.ok(
-      svc.create(s));
+        svc.create(s));
   }
 }</code></pre>
     </div>
     <div>
-      <p class="accent" style="font-size:0.8em;">Service (logic)</p>
+      <p class="accent" style="font-size:.8em;">Service (logic owner)</p>
       <pre><code class="java">@Service
 public class SubmissionService {
   @Autowired SubmissionRepository repo;
@@ -418,7 +442,7 @@ public class SubmissionService {
   public Submission create(Submission s) {
     if (s.getStudentName() == null)
       throw new IllegalArgumentException(
-        "Name required");
+          "Name required");
     s.setStatus("SUBMITTED");
     return repo.save(s);
   }
@@ -427,13 +451,36 @@ public class SubmissionService {
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════════════
-     SLIDE 16 — MYSQL SCHEMA DESIGN
-═══════════════════════════════════════════════ -->
+<!-- ═══ SLIDE 14c: WHICH LAYER QUIZ ═══ -->
+<section data-background="#0a0a1a">
+  <h2>🏗 Quiz — Which Layer? <span class="badge-quiz badge-fun">Interactive</span></h2>
+  <p class="quiz-q"><strong>Q1:</strong> Your code checks <em>"if score &gt; 40, student passes"</em>. Where does this go?</p>
+  <ul class="quiz-options" id="ql1">
+    <li onclick="answer(this,'wrong')">A) Controller — it's important!</li>
+    <li onclick="answer(this,'correct')">B) Service — business logic lives here</li>
+    <li onclick="answer(this,'wrong')">C) Repository — save it to DB</li>
+    <li onclick="answer(this,'wrong')">D) main() method 😅</li>
+  </ul>
+  <p id="ql1-exp" style="display:none;font-size:.7em;color:#2ecc71;margin-top:.5em;">
+    ✅ <strong>Service layer</strong> — any business rule goes in Service. Controller just passes it through.
+  </p>
+  <br/>
+  <p class="quiz-q"><strong>Q2:</strong> A <em>waiter in a restaurant</em> is like which Spring Boot layer? 🍽</p>
+  <ul class="quiz-options" id="ql2">
+    <li onclick="answer(this,'correct')">A) Controller — takes order, delivers food</li>
+    <li onclick="answer(this,'wrong')">B) Service — the chef cooking</li>
+    <li onclick="answer(this,'wrong')">C) Repository — the fridge storing ingredients</li>
+    <li onclick="answer(this,'wrong')">D) MySQL — the pantry</li>
+  </ul>
+  <p id="ql2-exp" style="display:none;font-size:.7em;color:#2ecc71;margin-top:.5em;">
+    ✅ <strong>Controller</strong> = waiter (takes request, delivers response). <strong>Service</strong> = chef (does the real work). <strong>Repository</strong> = fridge (stores stuff). <strong>DB</strong> = pantry 😄
+  </p>
+</section>
+
+<!-- ═══ SLIDE 15: MYSQL SCHEMA ═══ -->
 <section>
   <h2>MySQL — Schema Design First</h2>
-  <p style="font-size:0.8em; color:#bdc3c7;">3 questions before writing SQL</p>
-  <div style="display:flex; gap:0.8em; margin:0.6em 0; font-size:0.8em;">
+  <div style="display:flex;gap:.8em;margin:.6em 0;font-size:.8em;">
     <div class="rule-box" style="flex:1;">1️⃣ What are my <span class="accent">entities</span>?</div>
     <div class="rule-box" style="flex:1;">2️⃣ What are their <span class="accent">relationships</span>?</div>
     <div class="rule-box" style="flex:1;">3️⃣ What will I <span class="accent">query</span> most?</div>
@@ -443,8 +490,7 @@ public class SubmissionService {
     student_id   INT NOT NULL,
     project_id   INT NOT NULL,
     submitted_at DATETIME DEFAULT NOW(),
-    status       ENUM('SUBMITTED','EVALUATED',
-                      'PASSED','FAILED')
+    status       ENUM('SUBMITTED','EVALUATED','PASSED','FAILED')
                  DEFAULT 'SUBMITTED',
     score        DECIMAL(5,2),
     FOREIGN KEY (student_id) REFERENCES students(id),
@@ -452,12 +498,39 @@ public class SubmissionService {
 );</code></pre>
 </section>
 
-<!-- ═══════════════════════════════════════════════
-     SLIDE 17 — INTEGRATION BLUEPRINT
-═══════════════════════════════════════════════ -->
+<!-- ═══ SLIDE 16: REAL WORLD JAVA TYPE QUIZ ═══ -->
+<section data-background="#0a001a">
+  <h2>🌍 Quiz — Real World → Java Type <span class="badge-fun badge-quiz">Fun Round</span></h2>
+  <p style="font-size:.8em;color:#bdc3c7;margin-bottom:.8em;">Match the real-world scenario to the Java type:</p>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:.6em;font-size:.82em;" id="rw-quiz">
+    <div class="rule-box" style="cursor:pointer;" onclick="revealRW('rw1')">
+      📋 College attendance register<br/>
+      <span style="color:#888;font-size:.85em;">(student → list of dates)</span>
+      <p id="rw1" style="display:none;margin:.4em 0 0;color:#2ecc71;font-weight:bold;"><code>Map&lt;String, List&lt;Date&gt;&gt;</code> ✅</p>
+    </div>
+    <div class="rule-box" style="cursor:pointer;" onclick="revealRW('rw2')">
+      👥 WhatsApp group members<br/>
+      <span style="color:#888;font-size:.85em;">(no duplicate members)</span>
+      <p id="rw2" style="display:none;margin:.4em 0 0;color:#2ecc71;font-weight:bold;"><code>Set&lt;String&gt;</code> ✅</p>
+    </div>
+    <div class="rule-box" style="cursor:pointer;" onclick="revealRW('rw3')">
+      🎵 Spotify playlist<br/>
+      <span style="color:#888;font-size:.85em;">(ordered, can repeat songs)</span>
+      <p id="rw3" style="display:none;margin:.4em 0 0;color:#2ecc71;font-weight:bold;"><code>List&lt;String&gt;</code> ✅</p>
+    </div>
+    <div class="rule-box" style="cursor:pointer;" onclick="revealRW('rw4')">
+      🚗 Ola ride queue at airport<br/>
+      <span style="color:#888;font-size:.85em;">(first come, first served)</span>
+      <p id="rw4" style="display:none;margin:.4em 0 0;color:#2ecc71;font-weight:bold;"><code>Queue&lt;String&gt;</code> ✅</p>
+    </div>
+  </div>
+  <p style="font-size:.65em;color:#888;margin-top:.8em;">👆 Click each card to reveal the answer</p>
+</section>
+
+<!-- ═══ SLIDE 17: INTEGRATION BLUEPRINT ═══ -->
 <section>
   <h2>Integration Blueprint</h2>
-  <div class="two-col" style="font-size:0.8em; margin-top:0.8em;">
+  <div class="two-col" style="font-size:.8em;margin-top:.8em;">
     <div>
       <p class="green">✅ Happy Path</p>
       <div class="rule-box">1. Request arrives at Controller</div>
@@ -474,52 +547,45 @@ public class SubmissionService {
       <div class="rule-box" style="border-color:#e74c3c;">DB error → 500</div>
     </div>
   </div>
-  <p style="font-size:0.72em; color:#f39c12; margin-top:0.6em;">
-    ⚡ Design happy path AND failure path together.
-  </p>
+  <p style="font-size:.72em;color:#f39c12;margin-top:.6em;">⚡ Design happy path AND failure path together.</p>
 </section>
 
-<!-- ═══════════════════════════════════════════════
-     SLIDE 18 — TEAM DESIGN SPRINT
-═══════════════════════════════════════════════ -->
+<!-- ═══ SLIDE 18: TEAM DESIGN SPRINT ═══ -->
 <section>
   <h2>Team Design Sprint</h2>
-  <p style="font-size:0.8em; color:#bdc3c7;">Produce these before you leave today</p>
-  <div style="display:grid; grid-template-columns:1fr 1fr; gap:0.6em; margin-top:0.6em; font-size:0.8em;">
+  <p style="font-size:.8em;color:#bdc3c7;">Produce these before you leave today</p>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:.6em;margin-top:.6em;font-size:.8em;">
     <div class="rule-box">📋 <strong>Problem Brief</strong><br/>Inputs · Outputs · Rules · Edges</div>
     <div class="rule-box">🏗 <strong>Method Breakdown</strong><br/>Name · Input · Output · Does</div>
-    <div class="rule-box">🗄 <strong>DB Schema</strong> (if Full-Stack)<br/>Tables · Keys · Relations</div>
+    <div class="rule-box">🗄 <strong>DB Schema</strong> (Full-Stack only)<br/>Tables · Keys · Relations</div>
     <div class="rule-box">🧪 <strong>8 Test Cases</strong><br/>3 Normal · 3 Edge · 2 Invalid</div>
   </div>
-  <div class="rule-box" style="margin-top:0.6em; font-size:0.78em; border-color:#2ecc71;">
+  <div class="rule-box" style="margin-top:.6em;font-size:.78em;border-color:#2ecc71;">
     🚀 Build Order: Input → Logic → Output → Edges → Spring layers → DB → Tests
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════════════
-     SLIDE 19 — EVALUATION RUBRIC
-═══════════════════════════════════════════════ -->
+<!-- ═══ SLIDE 19: EVALUATION RUBRIC ═══ -->
 <section>
   <h2>Evaluation Rubric</h2>
-  <table style="margin-top:0.8em; width:100%;">
-    <tr><th>Criteria</th><th>Weight</th></tr>
-    <tr><td>Correctness</td><td><span class="accent">40%</span></td></tr>
-    <tr><td>Edge-case + validation coverage</td><td><span class="accent">25%</span></td></tr>
-    <tr><td>Code structure (layering, methods)</td><td><span class="accent">20%</span></td></tr>
-    <tr><td>DB schema quality</td><td><span class="accent">10%</span></td></tr>
-    <tr><td>Explanation + design clarity</td><td><span class="accent">5%</span></td></tr>
+  <table style="margin-top:.8em;width:100%;">
+    <tr><th>#</th><th>Criteria</th><th>Marks</th></tr>
+    <tr><td>1</td><td>Correctness</td><td></td></tr>
+    <tr><td>2</td><td>Edge-case + validation coverage</td><td></td></tr>
+    <tr><td>3</td><td>Code structure (layering, methods)</td><td></td></tr>
+    <tr><td>4</td><td>DB schema quality</td><td></td></tr>
+    <tr><td>5</td><td>Explanation + design clarity</td><td></td></tr>
+    <tr><td>6</td><td></td><td></td></tr>
   </table>
-  <p style="font-size:0.72em; color:#bdc3c7; margin-top:0.8em;">
+  <p style="font-size:.72em;color:#bdc3c7;margin-top:.8em;">
     Submission must include: Source code · README · Sample I/O · Known limitations
   </p>
 </section>
 
-<!-- ═══════════════════════════════════════════════
-     SLIDE 20 — FIVE PRINCIPLES
-═══════════════════════════════════════════════ -->
+<!-- ═══ SLIDE 20: FIVE PRINCIPLES ═══ -->
 <section data-background-gradient="linear-gradient(135deg,#0f3460 0%,#1a1a2e 100%)">
   <h2>5 Principles to Repeat</h2>
-  <div style="font-size:0.8em; margin-top:0.8em;">
+  <div style="font-size:.8em;margin-top:.8em;">
     <div class="rule-box">1. <span class="accent">"Don't code what you haven't reasoned about."</span></div>
     <div class="rule-box">2. <span class="accent">"Validate input early, fail clearly, never silently."</span></div>
     <div class="rule-box">3. <span class="accent">"Controller is thin. Service owns logic. Repository only fetches."</span></div>
@@ -528,19 +594,17 @@ public class SubmissionService {
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════════════
-     SLIDE 21 — CLOSE
-═══════════════════════════════════════════════ -->
+<!-- ═══ SLIDE 21: CLOSE ═══ -->
 <section data-background-gradient="linear-gradient(135deg,#1a1a2e 0%,#0f3460 100%)">
   <h2>You're Ready. Go Build.</h2>
-  <p style="font-size:1em; color:#bdc3c7; margin-top:1em; line-height:1.8;">
+  <p style="font-size:1em;color:#bdc3c7;margin-top:1em;line-height:1.8;">
     Your design is clear.<br/>
     Your test cases are written.<br/>
-    <span style="color:#f39c12; font-weight:bold;">Implementation is just execution now.</span>
+    <span style="color:#f39c12;font-weight:bold;">Implementation is just execution now.</span>
   </p>
-  <hr style="border-color:#f39c12; width:30%; margin:1.2em auto;" />
-  <p style="font-size:0.7em; color:#95a5a6;">
-    📋 <a href="index.html" style="color:#3498db;">Full Lecture Notes →</a><br/>
+  <hr style="border-color:#f39c12;width:30%;margin:1.2em auto;" />
+  <p style="font-size:.7em;color:#95a5a6;">
+    📋 <a href="index.html" style="color:#3498db;">Full Lecture Notes →</a>&nbsp;&nbsp;
     🔗 <a href="https://hackathon-java-python.vercel.app/java.html" style="color:#3498db;">Problem Bank →</a>
   </p>
 </section>
@@ -562,6 +626,29 @@ public class SubmissionService {
     center: true,
     plugins: [ RevealHighlight, RevealNotes ]
   });
+
+  function answer(el, type) {
+    var list = el.parentElement;
+    var id   = list.id;
+    var expId = id + '-exp';
+    // prevent re-clicking
+    if (list.dataset.answered) return;
+    list.dataset.answered = 'true';
+    // mark all correct answers visible
+    Array.from(list.children).forEach(function(li) {
+      if (li.onclick && li.onclick.toString().indexOf("'correct'") > -1) {
+        li.classList.add('reveal-correct');
+      }
+    });
+    el.classList.add(type);
+    var exp = document.getElementById(expId);
+    if (exp) exp.style.display = 'block';
+  }
+
+  function revealRW(id) {
+    var el = document.getElementById(id);
+    if (el) el.style.display = 'block';
+  }
 </script>
 </body>
 </html>
